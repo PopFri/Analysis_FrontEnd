@@ -1,0 +1,16 @@
+.selectCol{
+    height: 100vh;
+    overflow-y: scroll;
+    .selectCol-title{
+        font-family: "Freesentation-9Black";
+        font-size: 25px;
+        color: #1ED863;
+        margin: 30px 0px 20px 42.9px;
+    }
+    .selectCol-contents{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 42.9px;
+        padding-bottom: 30px;
+    }
+}
