@@ -30,22 +30,23 @@
             }
         }
         .inputColumn-columnList{
-            width: 615px;
-            height: calc(100% - 132.5px);
-            margin: 10px 0;
+            width: calc(100% - 10px);
+            height: 420px;
+            overflow-y: scroll;
+            margin: 10px 5px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             .columnList-column{
                 width: fit-content;
-                height: 31px;
+                min-height: 31px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border: 2px solid #B9B9B9;
                 border-radius: 31px;
                 padding: 0 10px;
-                margin: 5px 0;
+                margin: 5px 10px;
                 .column-name{
                     margin: 0 25px;
                     font-family: "Freesentation-9Black";
@@ -115,4 +116,21 @@
             background-color: #1ED863;
         }
     }
+}
+
+.inputColumn-columnList::-webkit-scrollbar {
+    width : 3.9px;
+}
+
+.inputColumn-columnList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.inputColumn-columnList::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 4px;
+}
+
+.inputColumn-columnList::-webkit-scrollbar-thumb:hover {
+    background-color: #b9b9b9;
 }

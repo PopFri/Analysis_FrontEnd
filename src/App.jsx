@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/column" element={<SelectCol />} />
-          <Route path="/filter" element={<SelectFilter />} />
+          <Route path="/condition" element={<SelectFilter />} />
         </Routes>
       </BrowserRouter>
     </>
