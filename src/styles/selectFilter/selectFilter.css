@@ -1,11 +1,11 @@
-.selectCol{
-    .selectCol-title{
+.selectFilter{
+    .selectFilter-title{
         font-family: "Freesentation-9Black";
         font-size: 25px;
         color: #1ED863;
         margin: 30px 0px 20px 0px;
     }
-    .selectCol-contents{
+    .selectFilter-contents{
         display: flex;
         justify-content: center;
         align-items: flex-end;
