@@ -1,0 +1,25 @@
+.filtering-analysis-container {
+    margin: 30px;
+}
+
+.filtering-analysis-list {
+    height: 626px;
+    width: 1000px;
+    border: 2px solid #B9B9B9;
+    border-radius: 20px;
+    margin-right: 5px;
+    .filtering-list-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 47px;
+        background-color: #1ED863;
+        border-radius: 15px 15px 0 0;
+        .filtering-list-title-text {
+            margin: 0px 20px;
+            font-family: "Freesentation-7Bold";
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+    }
+}

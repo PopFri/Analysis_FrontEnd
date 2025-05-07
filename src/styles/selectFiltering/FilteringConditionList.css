@@ -1,0 +1,113 @@
+.filtering-condition-list-container {
+    margin: 30px;
+}
+
+.filtering-list {
+    height: 626px;
+    width: 1000px;
+    border: 2px solid #1ED863;
+    border-radius: 20px;
+    margin-right: 5px;
+    .filtering-list-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 47px;
+        background-color: #1ED863;
+        border-radius: 15px 15px 0 0;
+        .filtering-list-title-text {
+            margin: 20px;
+            margin-right: 700px;
+            font-family: "Freesentation-7Bold";
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        .add-filtering {
+            width: 95px;
+            height: 26px;
+            background-color: #000000;
+            border-radius: 26px;
+            color: #FFFFFF;
+            font-size: 23px;
+        }
+    }
+}
+
+.filtering-list-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+    .filtering-column {
+        display: flex; /* 가로 정렬 */
+        padding: 10px 20px;
+        border-bottom: 2px solid;
+        .process-index {
+            margin-right: 250px;
+            color: #FFFFFF;
+        }
+        .process-name {
+            margin-right: 350px;
+            color: #FFFFFF;
+        }
+        .process-date {
+            margin-right: 150px;
+            color: #FFFFFF;
+        }
+        .process-delete {
+            background-color: transparent;
+            border: none;
+            align-items: center;
+            margin-right: 0px;
+            .delete-image {
+                width: 20px;
+                height: 20px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.create-process-modal-container {
+    position: fixed;              /* 화면 고정 */
+    top: 0;
+    left: 0;
+    width: 100vw;                 /* 전체 너비 */
+    height: 100vh;                /* 전체 높이 */
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;                /* 중앙 정렬을 위해 flex 사용 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;                /* 다른 요소 위로 올라오게 */
+    .create-process-modal {
+        background-color: #1ED863;
+        border-radius: 19.5px;
+        width: 534px;
+        height: 182px;
+        .create-process-modal-title {
+            color: #FFFFFF;
+            font-size: 27.3px;
+        }
+
+        .create-process-modal-input {
+            border: none;
+            background-color: transparent;
+        }
+
+        .create-process-cancel-button {
+            width: 220px;
+            height: 39px;
+            border-radius: 11.7px;
+            background-color: #656363;
+        }
+
+        .create-process-commit-button {
+            width: 220px;
+            height: 39px;
+            border: none;
+            border-radius: 11.7px;
+            background-color: #FFFFFF;
+        }
+    }
+}

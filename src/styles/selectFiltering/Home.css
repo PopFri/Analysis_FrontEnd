@@ -1,0 +1,10 @@
+.home{
+    height: 100vh;
+    overflow-y: scroll;
+    .filtering-container{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 42.9px;
+        padding-bottom: 30px;
+    }
+}
