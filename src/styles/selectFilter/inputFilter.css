@@ -1,4 +1,4 @@
-.selectCol{
+.selectFilter{
     .container{
         height: 626px;
         display: flex;
@@ -6,7 +6,7 @@
         justify-content: space-between;
         margin-left: 5px;
     }
-    .contents-inputColumn{
+    .contents-inputFilter{
         width: 678px;
         height: 550px;
         display: flex;
@@ -15,7 +15,7 @@
         border: 2px solid #B9B9B9;
         border-radius: 20px;
         background-color: #D9D9D915;
-        .inputColumn-title{
+        .inputFilter-title{
             display: flex;
             align-items: center;
             width: 100%;
@@ -29,7 +29,7 @@
                 color: #FFFFFF;
             }
         }
-        .inputColumn-columnList{
+        .inputFilter-conditionList{
             width: calc(100% - 10px);
             height: 420px;
             overflow-y: scroll;
@@ -37,7 +37,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            .columnList-column{
+            .conditionList-condition{
                 width: fit-content;
                 min-height: 31px;
                 display: flex;
@@ -47,20 +47,20 @@
                 border-radius: 31px;
                 padding: 0 10px;
                 margin: 5px 10px;
-                .column-name{
+                .condition-name{
                     margin: 0 25px;
                     font-family: "Freesentation-9Black";
                     font-size: 13px;
                     color: #FFFFFF;
                 }
-                .column-del{
+                .condition-del{
                     width: 20px;
                     height: 20px;
                     cursor: pointer;
                 }
             }
         }
-        .inputColumn-input{
+        .inputFilter-input{
             width: 615px;
             height: 40.5px;
             display: flex;
@@ -118,19 +118,19 @@
     }
 }
 
-.inputColumn-columnList::-webkit-scrollbar {
+.inputFilter-conditionList::-webkit-scrollbar {
     width : 3.9px;
 }
 
-.inputColumn-columnList::-webkit-scrollbar-track {
+.inputFilter-conditionList::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.inputColumn-columnList::-webkit-scrollbar-thumb {
+.inputFilter-conditionList::-webkit-scrollbar-thumb {
     background-color: #D9D9D9;
     border-radius: 4px;
 }
 
-.inputColumn-columnList::-webkit-scrollbar-thumb:hover {
+.inputFilter-conditionList::-webkit-scrollbar-thumb:hover {
     background-color: #b9b9b9;
 }
