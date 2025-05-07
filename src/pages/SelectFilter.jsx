@@ -8,9 +8,11 @@ export default function SelectFilter() {
   return (
     <div className='selectFilter'>
         <Header />
-        <p className='selectFilter-title'>필터링 입력</p>
         <div className='selectFilter-contents'>
-          <ColumnTable />
+          <div>
+            <p className='selectFilter-title'>로그 데이터 선택</p>
+            <ColumnTable />
+          </div>
           <InputFilter />
         </div>
     </div>

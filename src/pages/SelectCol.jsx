@@ -8,10 +8,13 @@ export default function SelectCol() {
   return (
     <div className='selectCol'>
         <Header />
-        <p className='selectCol-title'>로그 데이터 선택</p>
+        
         <div className='selectCol-contents'>
+          <div>
+            <p className='selectCol-title'>로그 데이터 선택</p>
             <LogTable />
-            <InputColumn />
+          </div>
+          <InputColumn />
         </div>
     </div>
   )
