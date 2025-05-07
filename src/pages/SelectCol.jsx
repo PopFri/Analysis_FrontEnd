@@ -7,8 +7,8 @@ import InputColumn from '../components/selectCol/InputColumn'
 export default function SelectCol() {
   return (
     <div className='selectCol'>
+        <div className='backgroud' />
         <Header />
-        
         <div className='selectCol-contents'>
           <div>
             <p className='selectCol-title'>로그 데이터 선택</p>

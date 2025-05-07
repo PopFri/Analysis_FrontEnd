@@ -7,14 +7,15 @@ import '../styles/selectFilter/selectFilter.css'
 export default function SelectFilter() {
   return (
     <div className='selectFilter'>
-        <Header />
-        <div className='selectFilter-contents'>
-          <div>
-            <p className='selectFilter-title'>로그 데이터 선택</p>
-            <ColumnTable />
-          </div>
-          <InputFilter />
+      <div className='backgroud' />
+      <Header />
+      <div className='selectFilter-contents'>
+        <div>
+          <p className='selectFilter-title'>로그 데이터 선택</p>
+          <ColumnTable />
         </div>
+        <InputFilter />
+      </div>
     </div>
   )
 }

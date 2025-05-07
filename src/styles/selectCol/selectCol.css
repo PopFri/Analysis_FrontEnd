@@ -1,6 +1,4 @@
 .selectCol{
-    height: 100vh;
-    overflow-y: scroll;
     .selectCol-title{
         font-family: "Freesentation-9Black";
         font-size: 25px;

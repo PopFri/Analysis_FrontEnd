@@ -1,6 +1,4 @@
 .selectFilter{
-    height: 100vh;
-    overflow-y: scroll;
     .selectFilter-title{
         font-family: "Freesentation-9Black";
         font-size: 25px;
