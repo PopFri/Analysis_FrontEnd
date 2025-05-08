@@ -17,7 +17,7 @@
         border-radius: 15px 15px 0 0;
         .filtering-list-title-text {
             margin: 20px;
-            margin-right: 700px;
+            margin-right: 730px;
             font-family: "Freesentation-7Bold";
             font-size: 18px;
             color: #FFFFFF;
@@ -46,7 +46,7 @@
         align-items: center;
         padding: 10px 0px 5px 0px;
         border-bottom: 2px solid;
-        margin-top: 10px;
+        margin-top: 8px;
         width: 958px;
         height: 31px;
         gap: 150px;
@@ -72,6 +72,7 @@
             background-color: transparent;
             border: none;
             align-items: center;
+            margin-left: 25px;
             .delete-image {
                 width: 20px;
                 height: 20px;
@@ -157,5 +158,6 @@
 
 .filtering-pagination {
     margin-top: auto;
+    margin-bottom: 10px;
     padding: 20px 0;
 }
