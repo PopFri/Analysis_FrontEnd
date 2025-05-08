@@ -11,7 +11,7 @@ export default function SelectFilter() {
       <Header />
       <div className='selectFilter-contents'>
         <div>
-          <p className='selectFilter-title'>로그 데이터 선택</p>
+          <p className='selectFilter-title'>필터링 입력</p>
           <ColumnTable />
         </div>
         <InputFilter />
