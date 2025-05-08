@@ -1,5 +1,5 @@
 .filtering-condition-list-container {
-    margin: 30px;
+    margin: 10px;
 }
 
 .filtering-list {
@@ -158,6 +158,6 @@
 
 .filtering-pagination {
     margin-top: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding: 20px 0;
 }
