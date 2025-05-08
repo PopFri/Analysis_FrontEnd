@@ -37,6 +37,8 @@
         height: 40%;
         .analysis-column-title {
             color: #FFFFFF;
+            font-family: 'Freesentation-7Bold';
+            font-size: 17px;
             margin-bottom: 5px;
         }
         .analysis-column-container {
@@ -59,6 +61,7 @@
                 .column-name {
                     color: #FFFFFF;
                     font-size: 15px;
+                    font-family: 'Freesentation-5Medium';
                     margin: 10px;
                     white-space: nowrap;
                     overflow: hidden;
@@ -73,7 +76,9 @@
         height: 40%;
         .filtering-condition-title {
             color: #FFFFFF;
+            font-size: 17px;
             margin-bottom: 5px;
+            font-family: 'Freesentation-7Bold';
         }
         .filtering-condition-container {
             width: 323px;
@@ -95,6 +100,7 @@
                 .column-name {
                     color: #FFFFFF;
                     font-size: 15px;
+                    font-family: 'Freesentation-5Medium';
                     margin: 10px;
                     white-space: nowrap;
                     overflow: hidden;
