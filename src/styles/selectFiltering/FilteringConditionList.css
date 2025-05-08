@@ -1,0 +1,163 @@
+.filtering-condition-list-container {
+    margin: 10px;
+}
+
+.filtering-list {
+    height: 626px;
+    width: 1000px;
+    border: 2px solid #1ED863;
+    border-radius: 20px;
+    margin-right: 5px;
+    .filtering-list-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 47px;
+        background-color: #1ED863;
+        border-radius: 15px 15px 0 0;
+        .filtering-list-title-text {
+            margin: 20px;
+            margin-right: 730px;
+            font-family: "Freesentation-7Bold";
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        .add-filtering {
+            width: 95px;
+            height: 26px;
+            background-color: #000000;
+            border: none;
+            border-radius: 26px;
+            color: #FFFFFF;
+            font-size: 23px;
+        }
+    }
+}
+
+.filtering-list-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    .filtering-column {
+        display: flex;
+        align-items: center;
+        padding: 10px 0px 5px 0px;
+        border-bottom: 2px solid;
+        margin-top: 8px;
+        width: 958px;
+        height: 31px;
+        gap: 150px;
+        .process-index {
+            font-family: 'Freesentation-9Black';
+            font-size: 15px;
+            margin-left: 20px;
+            flex: 0 0 5%;
+            color: #FFFFFF;
+        }
+        .process-name {
+            font-family: 'Freesentation-9Black';
+            font-size: 15px;
+            flex: 0 0 30%;
+            color: #FFFFFF;
+        }
+        .process-date {
+            font-family: 'Freesentation-9Black';
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+        .process-delete {
+            background-color: transparent;
+            border: none;
+            align-items: center;
+            margin-left: 25px;
+            .delete-image {
+                width: 20px;
+                height: 20px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.create-process-modal-container {
+    position: fixed;              /* 화면 고정 */
+    top: 0;
+    left: 0;
+    width: 100vw;                 /* 전체 너비 */
+    height: 100vh;                /* 전체 높이 */
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;                /* 중앙 정렬을 위해 flex 사용 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;                /* 다른 요소 위로 올라오게 */
+    .create-process-modal {
+        background-color: #1ED863;
+        border-radius: 19.5px;
+        width: 534px;
+        height: 182px;
+        .create-process-modal-items {
+            margin: 30px;
+            .create-process-modal-title {
+                color: #FFFFFF;
+                font-size: 27.3px;
+                font-family: 'Freesentation-6SemiBold';
+                margin: 0;
+            }
+    
+            .create-process-input {
+                width: 470px;
+                height: 39px;
+                margin-bottom: 10px;
+                font-size: 15.6px;
+                font-family: 'Freesentation-5Medium';
+                color: #ffffff;
+                border: none;
+                border-bottom: 3px solid;
+                background: transparent;
+            }
+    
+            .create-process-input::placeholder {
+                font-size: 15.6px;
+                font-family: 'Freesentation-5Medium';
+                color: #ffffff;
+            }
+
+            .create-process-input:focus {
+                outline: none;
+            }
+    
+            .create-process-cancel-button {
+                width: 220px;
+                height: 39px;
+                margin-right: 10px;
+                font-family: 'Freesentation-7Bold';
+                font-size: 19.5px;
+                color: #FFFFFF;
+                border: none;
+                border-radius: 11.7px;
+                background-color: #656363;
+            }
+    
+            .create-process-commit-button {
+                width: 220px;
+                height: 39px;
+                margin-left: 20px;
+                font-family: 'Freesentation-7Bold';
+                font-size: 19.5px;
+                color: #000000;
+                border: none;
+                border-radius: 11.7px;
+                background-color: #FFFFFF;
+            }
+        }
+    }
+}
+
+.filtering-pagination {
+    margin-top: auto;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}

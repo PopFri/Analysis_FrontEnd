@@ -1,0 +1,16 @@
+.home{
+    width: 100%;
+    height: 100vh;
+    .filtering-container{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .filtering-select-title {
+            font-family: "Freesentation-9Black";
+            font-size: 25px;
+            color: #1ED863;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+    }
+}
