@@ -1,0 +1,40 @@
+.condition-pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* 페이지네이션 전체를 가로 가운데 */
+    align-items: center;       /* (세로 가운데 필요 시) */
+    margin-top: 0;
+  }
+    
+  .condition-pagination-content {
+    display: flex;
+    gap: 1rem;                 /* 버튼과 숫자 간격 */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 27.3px;
+  }
+  
+  .condition-pagination-button {
+    padding: 0.5rem 1rem;
+    font-size: 15.6px;
+    background-color: transparent;
+    font-family: "Gajraj One";
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+    
+  .condition-pagination-button.active {
+    color: #32ff87;
+    font-weight: bold;
+  }
+  
+  .review-page {
+    font-size: 15.6px;
+    color: #1ED863;
+    font-family: "Gajraj One";
+    font-weight: bold;
+  }
