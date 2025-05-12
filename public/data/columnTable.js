@@ -319,3 +319,30 @@ export const resultData = {
         
     }
 };
+
+export const resultRecordData = {
+    result: {
+      data: [
+        {
+          date: "2025.01.01 13:41",
+          dataList: [
+            { condition: "isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9", count: 780 },
+            { condition: "isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9 && isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)", count: 780 }
+          ]
+        },
+        {
+          date: "2025.01.01 14:00",
+          dataList: [
+            { condition: "isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9", count: 780 },
+            { condition: "isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9 && isvisit > 5", count: 780 },
+            { condition: "isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)", count: 780 }
+          ]
+        }
+      ]
+    }
+};
