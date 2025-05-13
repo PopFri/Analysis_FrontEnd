@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { graphData } from '../../../public/data/columnTable';
 import '../../styles/filteringResult/FilteringResultGraph.css'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const FilteringResultGraph = () => {
+    const data = graphData;
     const CustomizedAxisTick = ({ x, y, payload }) => {
         const MAX_LENGTH = 10; // ✅ 최대 표시 글자 수
         const text = payload.value.length > MAX_LENGTH
@@ -24,108 +26,6 @@ const FilteringResultGraph = () => {
           </g>
         );
     };
-    const data = [
-        {
-          name: 'isvisit > 5',
-          pv: 2400,
-          amt: 2400,
-        },
-        {
-          name: 'isvisitisvisit == 9',
-          pv: 1398,
-          amt: 2210,
-        },
-        {
-          name: 'isvisitisvisit == 9 && isvisit > 5',
-          pv: 2800,
-          amt: 2290,
-        },
-        {
-          name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
-          pv: 3908,
-          amt: 2000,
-        },
-        {
-            name: 'isvisit > 5',
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'isvisitisvisit == 9',
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'isvisitisvisit == 9 && isvisit > 5',
-            pv: 2800,
-            amt: 2290,
-        },
-        {
-            name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: 'isvisit > 5',
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'isvisitisvisit == 9',
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'isvisitisvisit == 9 && isvisit > 5',
-            pv: 2800,
-            amt: 2290,
-        },
-        {
-            name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: 'isvisit > 5',
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'isvisitisvisit == 9',
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'isvisitisvisit == 9 && isvisit > 5',
-            pv: 2800,
-            amt: 2290,
-        },
-        {
-            name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: 'isvisit > 5',
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'isvisitisvisit == 9',
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'isvisitisvisit == 9 && isvisit > 5',
-            pv: 2800,
-            amt: 2290,
-        },
-        {
-            name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
-            pv: 3908,
-            amt: 2000,
-        },
-    ];
     const barSize = 40;
     const chartWidth = data.length * barSize + data.length * 10; // 간격 포함한 넉넉한 너비
     return (

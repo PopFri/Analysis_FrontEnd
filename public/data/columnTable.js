@@ -346,3 +346,106 @@ export const resultRecordData = {
       ]
     }
 };
+
+export const graphData = [
+    {
+      name: 'isvisit > 5',
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'isvisitisvisit == 9',
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'isvisitisvisit == 9 && isvisit > 5',
+      pv: 2800,
+      amt: 2290,
+    },
+    {
+      name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+        name: 'isvisit > 5',
+        pv: 2400,
+        amt: 2400,
+    },
+    {
+        name: 'isvisitisvisit == 9',
+        pv: 1398,
+        amt: 2210,
+    },
+    {
+        name: 'isvisitisvisit == 9 && isvisit > 5',
+        pv: 2800,
+        amt: 2290,
+    },
+    {
+        name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
+        pv: 3908,
+        amt: 2000,
+    },
+    {
+        name: 'isvisit > 5',
+        pv: 2400,
+        amt: 2400,
+    },
+    {
+        name: 'isvisitisvisit == 9',
+        pv: 1398,
+        amt: 2210,
+    },
+    {
+        name: 'isvisitisvisit == 9 && isvisit > 5',
+        pv: 2800,
+        amt: 2290,
+    },
+    {
+        name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
+        pv: 3908,
+        amt: 2000,
+    },
+    {
+        name: 'isvisit > 5',
+        pv: 2400,
+        amt: 2400,
+    },
+    {
+        name: 'isvisitisvisit == 9',
+        pv: 1398,
+        amt: 2210,
+    },
+    {
+        name: 'isvisitisvisit == 9 && isvisit > 5',
+        pv: 2800,
+        amt: 2290,
+    },
+    {
+        name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
+        pv: 3908,
+        amt: 2000,
+    },
+    {
+        name: 'isvisit > 5',
+        pv: 2400,
+        amt: 2400,
+    },
+    {
+        name: 'isvisitisvisit == 9',
+        pv: 1398,
+        amt: 2210,
+    },
+    {
+        name: 'isvisitisvisit == 9 && isvisit > 5',
+        pv: 2800,
+        amt: 2290,
+    },
+    {
+        name: 'isvisitisvisit == 9 || (isvisit > 5 && time_spent_ref_action < 10)',
+        pv: 3908,
+        amt: 2000,
+    },
+];
