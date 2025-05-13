@@ -3,18 +3,23 @@
 }
 
 .result-graph-wrapper {
-    width: 408px;
-    height: 340px;
+    position: relative;
+    width: 100%;
+    max-width: 408px;
+    height: 341px;
     border: 2px solid #1ED863;
+    border-top: none;
     border-radius: 20px;
     margin-right: 5px;
+    background-color: #1E1F2280;
+    overflow: hidden;
     .result-graph-title {
         display: flex;
         align-items: center;
         width: 100%;
         height: 47px;
         background-color: #1ED863;
-        border-radius: 15px 15px 0 0;
+        border-radius: 10px 10px 0 0;
         .result-graph-title-text {
             margin: 20px;
             font-family: "Freesentation-7Bold";
@@ -24,13 +29,49 @@
     }
 }
 
-.result-graph {
-    height: 100%;
-    overflow: auto;
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE, Edge */
+.result-total-data {
+    color: #FFFFFF;
+    position: absolute;      
+    top: 53px;                
+    right: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-family: 'Freesentation-5Medium';
+    z-index: 2;
 }
 
-.result-graphr::-webkit-scrollbar {
-    display: none;                /* Chrome, Safari, Opera */
+.result-graph {
+    width: 100%;
+    height: 80%;
+    overflow-x: auto;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.result-graph::-webkit-scrollbar {
+    width: 3.9px;
+    height: 3.9px;
+}
+
+.result-graph::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.result-graph::-webkit-scrollbar-thumb {
+    background-color: #555;
+    background-clip: padding-box;
+    border-radius: 20px;
+    
+}
+
+.result-graph::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    border: none;
+    box-shadow: none;
+    background-clip: padding-box;
+}
+
+.result-graph::-webkit-scrollbar-corner {
+    background: none;
+    display: block; 
 }
