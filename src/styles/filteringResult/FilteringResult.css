@@ -1,0 +1,36 @@
+.filtering-result{
+    width: 100%;
+    height: 100vh;
+    .filtering-result-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        
+    }
+}
+.filtering-result-column{
+    .filtering-result-title {
+        font-family: "Freesentation-9Black";
+        font-size: 25px;
+        color: #1ED863;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.filtering-result-record-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.go-to-home-button {
+    width: 408px;
+    height: 59px;
+    background-color: #1ED863;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-family: 'Freesentation-9Black';
+}
