@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Header from '../components/Header'
+import { useNavigate } from 'react-router-dom';
 import '../styles/filteringResult/FilteringResult.css'
 import AnalysisColumn from '../components/filteringResult/AnalysisColumn'
 import FilteringConditionColumn from '../components/filteringResult/FilteringConditionColumn'
@@ -8,7 +9,8 @@ import FilteringResultGraph from '../components/filteringResult/FilteringResultG
 import FilteringResultRecord from '../components/filteringResult/FilteringResultRecord'
 
 export default function FilteringResult() {
-    
+    const navigate = useNavigate();
+
     return (
         <div className='filtering-result'>
             <div className='backgroud' />
@@ -23,7 +25,7 @@ export default function FilteringResult() {
                 <div className='filtering-result-record-container'>
                     <FilteringResultGraph />
                     <FilteringResultRecord />
-                    <button className='go-to-home-button'>
+                    <button className='go-to-home-button' onClick={() => navigate('/home')}>
                         홈으로
                     </button>
                 </div>

@@ -45,6 +45,7 @@
     color: #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     margin-bottom: 7px;
+    margin-top: 10px;
 }
   
 .record-table-row {
@@ -59,6 +60,7 @@
     border-bottom: 1px solid #313438;
     background-color: #2E2F32;
     font-family: 'Freesentation-5Medium';
+    font-size: 15px;
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
@@ -71,6 +73,7 @@
     border-bottom: 1px solid #313438;
     background-color: #383838;
     font-family: 'Freesentation-5Medium';
+    font-size: 15px;
     color: #ffffff;
     white-space: nowrap;
     min-width: 80px;

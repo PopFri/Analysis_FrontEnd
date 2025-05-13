@@ -21,10 +21,10 @@ const FilteringResultRecord = () => {
                             {data.dataList.map((item, idx) => (
                         <div className="record-table-row" key={idx}> 
                             <div className="record-table-condition">
-                            {item.condition}
+                                {item.condition}
                             </div>
                             <div className="record-table-count">
-                            {item.count}
+                                {item.count}
                             </div>
                         </div>
                         ))}
