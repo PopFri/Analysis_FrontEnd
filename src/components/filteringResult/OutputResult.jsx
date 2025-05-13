@@ -11,6 +11,10 @@ const OutputResult = () => {
     const [sortResetButton, setSortResetButton] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(1);
+    const indexColor = (index) => {
+        if(sortIndex == index) return '#1ED863';
+        else return '#FFFFFF';
+    }
 
     const sortingHandler = (index) => {
         setSortIndex(index);
@@ -68,7 +72,7 @@ const OutputResult = () => {
                                 <div className="table-cell index-header-cell" >
                                 </div>
                             {headers.map((key, idx) => (
-                                <div className="table-cell header-cell" key={idx}>
+                                <div className="table-cell header-cell" key={idx} style={{color: `${indexColor(key)}`}}>
                                     {key}
                                     <button className="select-table-button" onClick={() => sortingHandler(key)}>
                                         <img src="/images/icon-park-solid_sort.png" className="select-table-icon" />
