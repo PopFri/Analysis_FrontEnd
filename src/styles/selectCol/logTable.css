@@ -28,7 +28,7 @@
         justify-content: space-around;
         .table-log{
             width: 634px;
-            height: 171px;
+            height: calc(100% - 30px);
             background-color: #D9D9D915;
             border-radius: 15px;
             .log-title{
@@ -58,6 +58,7 @@
                 .columns-column{
                     break-inside: avoid;
                     display: flex;
+                    margin-bottom: 3px;
                     p{
                         font-family: 'Freesentation-6SemiBold';
                         font-size: 12px;

@@ -1,128 +1,178 @@
-export const table1 = {
-    "name": "log_visit",
-    "detail": "방문 단위의 정보 저장",
+export const table = {
+    "name": "Log",
+    "detail": "JSON 형태로 데이터 요청",
     "columns": [
         {
-            "name": "idvisit",
-            "detail": "방문 고유 ID"
+            "name": "HTTP_POPFRI_IP",
+            "detail": "클라이언트 IP 주소"
         },
         {
-            "name": "idsite",
-            "detail": "사이트 ID (Matomo 인스턴스 기준)"
+            "name": "HTTP_HOST",
+            "detail": "요청이 도달한 서버의 호스트명 또는 컨테이너 이름"
         },
         {
-            "name": "idvisitor",
-            "detail": "방문자 고유 ID (브라우저 쿠키 또는 uid로 식별)"
+            "name": "HTTP_CONNECTION",
+            "detail": "HTTP 연결 설정 (예: 'close'는 응답 후 연결 종료)"
         },
         {
-            "name": "visitor_localtime",
-            "detail": "방문자의 로컬 시간"
+            "name": "HTTP_CONTENT_LENGTH",
+            "detail": "요청 본문의 크기 (바이트 단위)"
         },
         {
-            "name": "visit_first_action_time",
-            "detail": "첫 액션 시간"
+            "name": "HTTP_USER_AGENT",
+            "detail": "사용자 브라우저 및 OS 정보"
         },
         {
-            "name": "visit_last_action_time",
-            "detail": "마지막 액션 시간"
+            "name": "HTTP_DNT",
+            "detail": "Do Not Track 설정 값 (1이면 추적 비허용 의사 표시)"
         },
         {
-            "name": "visit_total_actions",
-            "detail": "총 액션 수 (클릭, 페이지 뷰 등)"
+            "name": "HTTP_CONTENT_TYPE",
+            "detail": "요청의 콘텐츠 유형 (예: application/x-www-form-urlencoded)"
         },
         {
-            "name": "visit_total_time",
-            "detail": "총 체류 시간"
+            "name": "HTTP_ACCEPT",
+            "detail": "클라이언트가 허용하는 응답 MIME 타입"
         },
         {
-            "name": "location_ip",
-            "detail": "방문자의 IP 주소"
+            "name": "HTTP_ORIGIN",
+            "detail": "요청을 유발한 출처 (CORS 정책에 사용됨)"
         },
         {
-            "name": "user_id",
-            "detail": "사용자 ID (uid로 전송한 값)"
+            "name": "HTTP_REFERER",
+            "detail": "요청 직전의 페이지 URL"
         },
         {
-            "name": "referer_name",
-            "detail": "유입 경로 도메인 (ex. google)"
+            "name": "HTTP_ACCEPT_ENCODING",
+            "detail": "지원되는 압축 방식 (예: gzip, deflate)"
         },
         {
-            "name": "referer_keyword",
-            "detail": "검색 키워드"
+            "name": "HTTP_ACCEPT_LANGUAGE",
+            "detail": "사용자의 선호 언어 목록"
         },
         {
-            "name": "device_type",
-            "detail": "기기 종류 (ex. desktop, smartphone 등)"
+            "name": "REMOTE_ADDR",
+            "detail": "요청을 보낸 클라이언트의 IP"
         },
         {
-            "name": "operating_system",
-            "detail": "OS 이름"
+            "name": "QUERY_ping",
+            "detail": "페이지뷰와는 별개로 세션 유지 또는 활성 확인용 핑 요청 여부 (1이면 핑)"
         },
         {
-            "name": "browser_name",
-            "detail": "브라우저 이름"
-        },
-    ]
-};
-
-export const table2 = {
-    "name": "log_link_visit_action",
-    "detail": "개별 액션(페이지 뷰 등) 기록",
-    "columns": [
-        {
-            "name": "idlink_va",
-            "detail": "액션 고유 ID"
+            "name": "QUERY_idsite",
+            "detail": "Matomo에서 정의한 사이트 ID"
         },
         {
-            "name": "idvisit",
-            "detail": "연결된 방문 ID"
+            "name": "QUERY_rec",
+            "detail": "기록 여부 플래그"
         },
         {
-            "name": "server_time",
-            "detail": "서버 수신 시간"
+            "name": "QUERY_r",
+            "detail": "캐시 방지를 위한 무작위 수 (random)"
         },
         {
-            "name": "idaction_url",
-            "detail": "URL 액션 ID"
+            "name": "QUERY_h",
+            "detail": "요청 시점의 시간(hour)"
         },
         {
-            "name": "idaction_name",
-            "detail": "페이지 타이틀 또는 이벤트 이름"
+            "name": "QUERY_m",
+            "detail": "요청 시점의 분(minute)"
         },
         {
-            "name": "time_spent_ref_action",
-            "detail": "이전 액션에 머문 시간"
+            "name": "QUERY_s",
+            "detail": "요청 시점의 초(second)"
         },
         {
-            "name": "custom_float",
-            "detail": "이벤트 값 또는 커스텀 값"
+            "name": "QUERY_url",
+            "detail": "사용자가 방문한 실제 URL"
         },
         {
-            "name": "pageview_position",
-            "detail": "몇 번째 페이지뷰인지"
+            "name": "QUERY_uid",
+            "detail": "사용자 고유 ID"
         },
         {
-            "name": "interaction_position",
-            "detail": "상호작용 순서 (ex. 클릭 등)"
-        },
-    ]
-};
-
-export const table3 = {
-    "name": "log_action",
-    "detail": "URL, 페이지 타이틀, 이벤트 이름 저장",
-    "columns": [
-        {
-            "name": "idaction",
-            "detail": "액션 고유 ID"
+            "name": "QUERY__id",
+            "detail": "Matomo 방문자 고유 ID (쿠키 기반)"
         },
         {
-            "name": "name",
-            "detail": "실제 URL, 이벤트 이름 등"
+            "name": "QUERY__idn",
+            "detail": "신규 방문 여부 (1 = 신규 방문, 0 = 기존)"
         },
         {
-            "name": "type",
-            "detail": "액션 타입 (페이지뷰, 이벤트 등)"
+            "name": "QUERY_send_image",
+            "detail": "이미지 트래커 전송 여부 (0 = 이미지 생략)"
         },
+        {
+            "name": "QUERY__refts",
+            "detail": "참조 사이트 방문 시간 (timestamp; 없을 경우 0)"
+        },
+        {
+            "name": "QUERY_pf_net",
+            "detail": "페이지 로딩 네트워크 지연 시간(ms)"
+        },
+        {
+            "name": "QUERY_pf_srv",
+            "detail": "페이지 로딩 서버 처리 시간(ms)"
+        },
+        {
+            "name": "QUERY_pf_tfr",
+            "detail": "페이지 로딩 전송 시간(ms)"
+        },
+        {
+            "name": "QUERY_pf_dm1",
+            "detail": "페이지 로딩 DOM 처리 1단계 시간(ms)"
+        },
+        {
+            "name": "QUERY_pf_dm2",
+            "detail": "페이지 로딩 DOM 처리 2단계 시간(ms)"
+        },
+        {
+            "name": "QUERY_pf_onl",
+            "detail": "페이지가 완전히 로딩된 후 경과 시간(ms)"
+        },
+        {
+            "name": "QUERY_pv_id",
+            "detail": "Matomo가 생성한 페이지뷰 고유 식별자"
+        },
+        {
+            "name": "QUERY_uadata",
+            "detail": "User-Agent Client Hints 데이터"
+        },
+        {
+            "name": "QUERY_pdf",
+            "detail": "브라우저의 PDF 지원 여부 (1 = 지원)"
+        },
+        {
+            "name": "QUERY_qt",
+            "detail": "QuickTime 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_realp",
+            "detail": "RealPlayer 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_wma",
+            "detail": "Windows Media 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_fla",
+            "detail": "Flash 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_java",
+            "detail": "Java 실행 환경 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_ag",
+            "detail": "Silverlight 지원 여부 (0 = 미지원)"
+        },
+        {
+            "name": "QUERY_cookie",
+            "detail": "쿠키 사용 가능 여부 (1 = 쿠키 사용 가능)"
+        },
+        {
+            "name": "QUERY_res",
+            "detail": "화면 해상도 (예: 1920x1080)"
+        }
     ]
 };
