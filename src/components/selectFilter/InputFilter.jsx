@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import srcSearchIcon from '/images/searchIcon.png'
 import srcDelIcon from '/images/btnCancelRed.png'
@@ -8,6 +8,7 @@ import '../../styles/selectFilter/inputFilter.css'
 export default function InputFilter(props) {
   const [andTarget, setTarget] = useState(0);
   const [op, setOp] = useState("");
+  const [inputValue, setValue] = useState(null);
   const [isNumber, setType] = useState(true);
   const [condition, setCondition] = useState([]);
 
@@ -60,19 +61,26 @@ export default function InputFilter(props) {
     return null; // 찾지 못한 경우
   };
   
-
-  //action handle
-  const handleSumbit = (e, targetId) => {
+  //input value
+  const inputConditionValue = (e) => {
     e.preventDefault();
     const form = e.target;
     const input = form.elements.input;
-    let input_value
+    let value;
     if(isNumber)
-      input_value = input.value;
+      value = input.value;
     else
-      input_value = '"' + input.value.trim() + '"';
+      value = '"' + input.value.trim() + '"';
 
-    const value = props.column.value + " " + op + " " + input_value;
+    setValue(value);
+    input.value = '';
+  }
+  //action handle
+  const handleSumbit = (targetId) => {
+    if(op == null || props.column == null || inputValue == null)
+      return;
+
+    const value = props.column.value + " " + op + " " + inputValue;
 
     if(value){
         const newNode = {
@@ -83,11 +91,10 @@ export default function InputFilter(props) {
         
           const updated = addNodeById(condition, targetId, newNode);
           setCondition(updated);
-        input.value = '';
     }
 
     props.setColumn({"id": -1, "value": ""});
-    setOp("");
+    setValue(null);
   }
 
   const handleDel = (targetId) => {
@@ -128,33 +135,9 @@ export default function InputFilter(props) {
             <img src={srcSearchIcon} alt="" />
         </form>
       )
-    } else if(op.length == 0){
-      return(
-        <form className='inputFilter-input'>
-            <div className='input-inputOp' onClick={() => setOp(">")}>
-              <p className='inputOp-Text'>{'>'}</p>
-            </div>
-            <div className='input-inputOp' onClick={() => setOp(">=")}>
-              <p className='inputOp-Text'>{'>='}</p>
-            </div>
-            <div className='input-inputOp' onClick={() => setOp("==")}>
-              <p className='inputOp-Text'>{'=='}</p>
-            </div>
-            <div className='input-inputOp' onClick={() => setOp("!=")}>
-              <p className='inputOp-Text'>{'!='}</p>
-            </div>
-            <div className='input-inputOp' onClick={() => setOp("<=")}>
-              <p className='inputOp-Text'>{'<='}</p>
-            </div>
-            <div className='input-inputOp' onClick={() => setOp("<")}>
-              <p className='inputOp-Text'>{'<'}</p>
-            </div>
-            <img src={srcSearchIcon} alt="" />
-        </form>
-      )
-    } else {
+    } else if(inputValue == null){
       return (
-        <form className='inputFilter-input' onSubmit={(e) => handleSumbit(e, andTarget)}>
+        <form className='inputFilter-input' onSubmit={(e) => inputConditionValue(e)}>
             <div className='input-toggleType'>
               <p className='toggleType-text'>{isNumber ? "Number" : "String"}</p>
               <img src={srcTogIcon} alt="" onClick={() => setType(!isNumber)}/>
@@ -163,8 +146,57 @@ export default function InputFilter(props) {
             <img src={srcSearchIcon} alt="" />
         </form>
       )
+    } else {
+      return(
+        <form className='inputFilter-input'>
+            <div className='input-inputOp' onClick={() => {
+              setOp(">");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'>'}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp(">=");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'>='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("==");
+            }}>
+              <p className='inputOp-Text'>{'=='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("!=");
+            }}>
+              <p className='inputOp-Text'>{'!='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("<=");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'<='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("<");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'<'}</p>
+            </div>
+            <img src={srcSearchIcon} alt="" />
+        </form>
+      )
     }
   }
+  
+  useEffect(()=>{
+    handleSumbit(andTarget);
+  }, [op])
+
   return (
     <div className='container'>
         <div className='contents-inputFilter'>
