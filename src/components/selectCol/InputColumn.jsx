@@ -40,7 +40,7 @@ export default function InputColumn() {
                 })}
             </div>
             <form className='inputColumn-input' onSubmit={(e) => handleSumbit(e)}>
-                <input type="text" name="input" id="" placeholder='분석할 컬럼 이름을 입력해주세요.'/>
+                <input type="text" name="input" id="" placeholder='분석할 컬럼 이름을 입력해주세요.' autoComplete='false'/>
                 <img src={srcSearchIcon} alt="" />
             </form>
         </div>
