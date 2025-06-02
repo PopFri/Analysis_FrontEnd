@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import srcSearchIcon from '/images/searchIcon.png'
 import srcDelIcon from '/images/btnCancelRed.png'
+import srcTogIcon from '/images/btnToggle.png'
 import '../../styles/selectFilter/inputFilter.css'
 
-export default function InputFilter() {
+export default function InputFilter(props) {
   const [andTarget, setTarget] = useState(0);
+  const [op, setOp] = useState("");
+  const [inputValue, setValue] = useState(null);
+  const [isNumber, setType] = useState(true);
   const [condition, setCondition] = useState([]);
 
   //node process
@@ -57,13 +61,26 @@ export default function InputFilter() {
     return null; // 찾지 못한 경우
   };
   
-
-  //action handle
-  const handleSumbit = (e, targetId) => {
+  //input value
+  const inputConditionValue = (e) => {
     e.preventDefault();
     const form = e.target;
     const input = form.elements.input;
-    const value = input.value.trim();
+    let value;
+    if(isNumber)
+      value = input.value;
+    else
+      value = '"' + input.value.trim() + '"';
+
+    setValue(value);
+    input.value = '';
+  }
+  //action handle
+  const handleSumbit = (targetId) => {
+    if(op == null || props.column == null || inputValue == null)
+      return;
+
+    const value = props.column.value + " " + op + " " + inputValue;
 
     if(value){
         const newNode = {
@@ -74,8 +91,10 @@ export default function InputFilter() {
         
           const updated = addNodeById(condition, targetId, newNode);
           setCondition(updated);
-        input.value = '';
     }
+
+    props.setColumn({"id": -1, "value": ""});
+    setValue(null);
   }
 
   const handleDel = (targetId) => {
@@ -107,6 +126,77 @@ export default function InputFilter() {
     ));
   };
 
+  //view input
+  const viewInput = () => {
+    if(props.column.id < 0){
+      return (
+        <form className='inputFilter-input' style={{backgroundColor: '#65636390'}}>
+            <p className='input-inputColunm'>좌측 화면에서 필터링할 컬럼을 선택해주세요</p>
+            <img src={srcSearchIcon} alt="" />
+        </form>
+      )
+    } else if(inputValue == null){
+      return (
+        <form className='inputFilter-input' onSubmit={(e) => inputConditionValue(e)}>
+            <div className='input-toggleType'>
+              <p className='toggleType-text'>{isNumber ? "Number" : "String"}</p>
+              <img src={srcTogIcon} alt="" onClick={() => setType(!isNumber)}/>
+            </div>
+            <input type={isNumber ? "number" : "text"} name="input" id="" placeholder='필터링할 값을 입력해주세요.' autoComplete='off'/>
+            <img src={srcSearchIcon} alt="" />
+        </form>
+      )
+    } else {
+      return(
+        <form className='inputFilter-input'>
+            <div className='input-inputOp' onClick={() => {
+              setOp(">");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'>'}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp(">=");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'>='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("==");
+            }}>
+              <p className='inputOp-Text'>{'=='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("!=");
+            }}>
+              <p className='inputOp-Text'>{'!='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("<=");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'<='}</p>
+            </div>
+            <div className='input-inputOp' onClick={() => {
+              setOp("<");
+            }}
+            style = {isNumber ? null : {display: 'none'}}
+            >
+              <p className='inputOp-Text'>{'<'}</p>
+            </div>
+            <img src={srcSearchIcon} alt="" />
+        </form>
+      )
+    }
+  }
+  
+  useEffect(()=>{
+    handleSumbit(andTarget);
+  }, [op])
+
   return (
     <div className='container'>
         <div className='contents-inputFilter'>
@@ -124,10 +214,7 @@ export default function InputFilter() {
                     </div>
                     <img className='isTyping-del' src={srcDelIcon} alt="" onClick={() => setTarget(0)}/>                
                 </div>
-                <form className='inputFilter-input' onSubmit={(e) => handleSumbit(e, andTarget)}>
-                    <input type="text" name="input" id="" placeholder='필터링할 조건을 입력해주세요.' autoComplete='off'/>
-                    <img src={srcSearchIcon} alt="" />
-                </form>
+                {viewInput()}
             </div>
         </div>
         <div className='contents-button'>
