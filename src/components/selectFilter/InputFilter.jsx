@@ -142,7 +142,7 @@ export default function InputFilter(props) {
               <p className='toggleType-text'>{isNumber ? "Number" : "String"}</p>
               <img src={srcTogIcon} alt="" onClick={() => setType(!isNumber)}/>
             </div>
-            <input type={isNumber ? "number" : "text"} name="input" id="" placeholder='필터링할 값을 입력해주세요.' autoComplete='off'/>
+            <input type={isNumber ? "number" : "text"} name="input" id="" placeholder='필터링할 값을 입력해주세요.' autoComplete='off' step={0.0000000001}/>
             <img src={srcSearchIcon} alt="" />
         </form>
       )
