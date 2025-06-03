@@ -80,12 +80,15 @@ export default function InputFilter(props) {
     if(op == null || props.column == null || inputValue == null)
       return;
 
-    const value = props.column.value + " " + op + " " + inputValue;
+    const str_conditinon = props.column.value + " " + op + " " + inputValue;
 
-    if(value){
+    if(str_conditinon){
         const newNode = {
             id: 'id-' + Date.now(),
-            value: value,
+            str_conditinon: str_conditinon,
+            column: props.column.value,
+            op: op,
+            value: inputValue,
             condition: []
           };
         
@@ -107,6 +110,7 @@ export default function InputFilter(props) {
 
   //view node
   const viewConditionTree = (nodes) => {
+    console.log(nodes);
     return nodes.map((node, index) => (
         <>
             <div className='conditionList-container'>
@@ -114,7 +118,7 @@ export default function InputFilter(props) {
                     <div className='condition-andButton' onClick={() => {setTarget(node.id)}}>
                         <p className='andButton-text'>AND</p>
                     </div>
-                    <p className='condition-name'>{node.value}</p>
+                    <p className='condition-name'>{node.str_conditinon}</p>
                     <img className='condition-del' src={srcDelIcon} alt="" onClick={() => handleDel(node.id)}/>                
                 </div>
                 <div className='container-ifConditionMany' style={node.condition.length > 1 ? {border: '2px solid #4285F4', marginBottom: '5px'}: null}>
@@ -142,7 +146,7 @@ export default function InputFilter(props) {
               <p className='toggleType-text'>{isNumber ? "Number" : "String"}</p>
               <img src={srcTogIcon} alt="" onClick={() => setType(!isNumber)}/>
             </div>
-            <input type={isNumber ? "number" : "text"} name="input" id="" placeholder='필터링할 값을 입력해주세요.' autoComplete='off'/>
+            <input type={isNumber ? "number" : "text"} name="input" id="" placeholder='필터링할 값을 입력해주세요.' autoComplete='off' step={0.0000000001}/>
             <img src={srcSearchIcon} alt="" />
         </form>
       )
