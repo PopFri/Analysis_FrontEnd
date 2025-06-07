@@ -8,11 +8,42 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
     const [processName, setProcessName] = useState('');
     const [page, setPage] = useState(1);
     const itemsPerPage = 9;
+    const Server_IP = import.meta.env.VITE_SERVER_IP;
+    
     // 페이지별 프로세스 목록 잘라내기
-    const slicedProcesses = (processList?.processes || []).slice(
+    const slicedProcesses = (processList || []).slice(
         (page - 1) * itemsPerPage,
         page * itemsPerPage
     );
+
+    const handleCreateProcess = async () => {
+        if (!processName.trim()) {
+          alert("필터링 이름을 입력해주세요.");
+          return;
+        }
+
+        try {
+            const res = await fetch(`${Server_IP}/api/v1/process`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: processName }),
+            });
+            const data = await res.json();
+
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
+
+            setProcessName("");
+            setShowCreateProcessModal(false);   
+        } catch {
+            alert("프로세스 생성 중 오류가 발생했습니다.");
+        }
+    };
 
     const deleteProcess = (id) => {
         console.log('delete ' + `${id}`);
@@ -21,17 +52,6 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
     const toggleCreateProcessModal = () => {
         setShowCreateProcessModal(prev => !prev);
         setProcessName('');
-    };
-
-    const handleCreateProcess = () => {
-        if (!processName.trim()) {
-          alert("필터링 이름을 입력해주세요.");
-          return;
-        }
-      
-        console.log("새 필터링 이름:", processName);
-      
-        setShowCreateProcessModal(false);               
     };
 
     const filteringCloumnColor = (id) => {
@@ -55,11 +75,11 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
                 </div>
                 <div className='filtering-list-table'>
                     {slicedProcesses.map((process, index) => (
-                        <div className='filtering-column' key={index} onClick={() => setProcessAnalysis(process.id)} style={{borderColor: `${filteringBorderColor(process.id)}`}}>
-                            <p className='process-index' style={{color: `${filteringCloumnColor(process.id)}`}}>{(index + 1) + itemsPerPage * (page - 1)}</p>
-                            <p className='process-name' style={{color: `${filteringCloumnColor(process.id)}`}}>{process.name}</p>
-                            <p className='process-date' style={{color: `${filteringCloumnColor(process.id)}`}}>{process.date}</p>
-                            <button className='process-delete' onClick={() => deleteProcess(process.id)}>
+                        <div className='filtering-column' key={index} onClick={() => setProcessAnalysis(process.processId)} style={{borderColor: `${filteringBorderColor(process.processId)}`}}>
+                            <p className='process-index' style={{color: `${filteringCloumnColor(process.processId)}`}}>{(index + 1) + itemsPerPage * (page - 1)}</p>
+                            <p className='process-name' style={{color: `${filteringCloumnColor(process.processId)}`}}>{process.name}</p>
+                            <p className='process-date' style={{color: `${filteringCloumnColor(process.processId)}`}}>{process.date}</p>
+                            <button className='process-delete' onClick={() => deleteProcess(process.processId)}>
                                 <img className='delete-image' src='/images/CancelLogoRed.png'/>
                             </button>
                         </div>
