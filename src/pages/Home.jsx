@@ -23,7 +23,7 @@ export default function Home() {
     .catch(err => {
         console.error('Error fetching:', err);
     });
-  }, []);
+  }, [processList]);
 
   return (
     <div className='home'>

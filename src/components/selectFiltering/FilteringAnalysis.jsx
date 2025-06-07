@@ -5,17 +5,51 @@ import { conditionData } from '../../../public/data/columnTable'
 import '../../styles/selectFiltering/FilteringAnalysis.css'
 
 const FilteringAnalysis = ({processAnalysis}) => {
-  const [seletedProcess, setSelectedProcess] = useState(false);
-  const [columnList, setColumnList] = useState(null);
-  const [conditionList, setConditionList] = useState(null);
+  const [seletedProcess, setSeletedProcess] = useState(false);
+  const [columnList, setColumnList] = useState([]);
+  const [conditionList, setConditionList] = useState([]);
+  const Server_IP = import.meta.env.VITE_SERVER_IP;
   const navigate = useNavigate();
 
+  const loadProcessColumn = async (processId) => {
+      try {
+          const res = await fetch(`${Server_IP}/api/v1/column?processId=${processId}`, {
+              method: 'GET',
+          });
+          const data = await res.json();
+          setColumnList(data.result);
+          if (!res.ok || !data.isSuccess) {
+              alert(data.message); 
+              return;
+          }
+
+      } catch {
+          alert("프로세스 생성 중 오류가 발생했습니다.");
+      }
+  };
+
+  const loadProcessCondition = async (processId) => {
+    try {
+        const res = await fetch(`${Server_IP}/api/v1/condition?processId=${processId}`, {
+            method: 'GET',
+        });
+        const data = await res.json();
+        setConditionList(data.result);
+        if (!res.ok || !data.isSuccess) {
+            alert(data.message); 
+            return;
+        }
+
+    } catch {
+        alert("프로세스 생성 중 오류가 발생했습니다.");
+    }
+  };
   useEffect(() => {
-      if(processAnalysis == null) setSelectedProcess(false);
+      if(processAnalysis == null) return;
       else {
-        setSelectedProcess(true);
-        setColumnList(columnData.result);
-        setConditionList(conditionData.result)
+        loadProcessColumn(processAnalysis);
+        loadProcessCondition(processAnalysis);
+        setSeletedProcess(true);
       }
   }, [processAnalysis]);
 
