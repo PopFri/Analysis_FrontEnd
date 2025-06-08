@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { columnData } from '../../../public/data/columnTable'
-import { conditionData } from '../../../public/data/columnTable'
 import '../../styles/selectFiltering/FilteringAnalysis.css'
 
 const FilteringAnalysis = ({processAnalysis}) => {
@@ -54,7 +52,7 @@ const FilteringAnalysis = ({processAnalysis}) => {
   }, [processAnalysis]);
 
   const executionHandler = () => {
-    navigate(`/column`);
+    navigate(`/column/${processAnalysis}`);
   }
   
   return (
