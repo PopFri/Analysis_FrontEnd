@@ -10,8 +10,34 @@ export default function InputFilter(props) {
   const [op, setOp] = useState("");
   const [inputValue, setValue] = useState(null);
   const [isNumber, setType] = useState(true);
-  const [condition, setCondition] = useState(props.conditionList);
+  const [condition, setCondition] = useState([]);
   const Server_IP = import.meta.env.VITE_SERVER_IP;
+
+  const parseConditionString = (conditionStr) => {
+  const ops = [">=", "<=", "!=", "==", ">", "<"];
+    for (const operator of ops) {
+      const parts = conditionStr.split(operator);
+      if (parts.length === 2) {
+        const [column, value] = parts.map(s => s.trim().replace(/^"|"$/g, '')); // 따옴표 제거
+        return { column, op: operator, value };
+      }
+    }
+    throw new Error("지원되지 않는 조건 형식: " + conditionStr);
+  };
+
+  const convertConditionList = (conditionList) => {
+    return conditionList.map(item => {
+      const { column, op, value } = parseConditionString(item.condition);
+      return {
+        id: item.conditionId,
+        str_conditinon: item.condition,
+        column,
+        op,
+        value,
+        condition: []  // 서브 조건이 있다면 이후에 재귀로 넣을 수 있음
+      };
+    });
+  };
 
   //node process
   const addNodeById = (nodes, targetId, newNode) => {
@@ -95,7 +121,7 @@ export default function InputFilter(props) {
         
           const updated = addNodeById(condition, targetId, newNode);
           setCondition(updated);
-          updateCondition(condition);
+          updateCondition(updated);
     }
 
     props.setColumn({"id": -1, "value": ""});
@@ -105,7 +131,7 @@ export default function InputFilter(props) {
   const handleDel = (targetId) => {
     const updated = deleteNodeById(condition, targetId);
     setCondition(updated);
-    updateCondition(condition);
+    updateCondition(updated);
     if(findValueById(updated, andTarget) === null){
         setTarget(0);
     }
@@ -121,7 +147,7 @@ export default function InputFilter(props) {
         },
         body: JSON.stringify({
           processId: props.processId,
-          condition: nodes // 전체 condition 트리 통째로 보냄
+          condition: nodes 
         }),
       });
 
@@ -137,9 +163,8 @@ export default function InputFilter(props) {
 
   //view node
   const viewConditionTree = (nodes) => {
-    console.log(nodes);
     return nodes.map((node, index) => (
-        <>
+        <div key={index}>
             <div className='conditionList-container'>
                 <div className='container-condition'>
                     <div className='condition-andButton' onClick={() => {setTarget(node.id)}}>
@@ -153,7 +178,7 @@ export default function InputFilter(props) {
                 </div>
             </div>
             {(index + 1) != nodes.length ? <p className='conditionList-or'>OR</p>: null}
-        </>
+        </div>
     ));
   };
 
@@ -223,9 +248,15 @@ export default function InputFilter(props) {
       )
     }
   }
+
+  useEffect(() => {
+    if (props.conditionList?.length > 0) {
+      const parsed = convertConditionList(props.conditionList);
+      setCondition(parsed);
+    }
+  }, [props.conditionList]);
   
   useEffect(()=>{
-    console.log(props.conditionList);
     if (op !== "" && props.column.id >= 0 && inputValue !== null) {
       handleSumbit(andTarget);
       setOp("");

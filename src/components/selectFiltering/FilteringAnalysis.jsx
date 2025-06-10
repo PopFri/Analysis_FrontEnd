@@ -22,7 +22,7 @@ const FilteringAnalysis = ({processAnalysis}) => {
           }
 
       } catch {
-          alert("프로세스 생성 중 오류가 발생했습니다.");
+          alert("컬럼 로드 중 오류가 발생했습니다.");
       }
   };
 
@@ -39,7 +39,7 @@ const FilteringAnalysis = ({processAnalysis}) => {
         }
 
     } catch {
-        alert("프로세스 생성 중 오류가 발생했습니다.");
+        alert("조건 로드 중 오류가 발생했습니다.");
     }
   };
   useEffect(() => {
