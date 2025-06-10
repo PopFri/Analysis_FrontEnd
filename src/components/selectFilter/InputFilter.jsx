@@ -10,7 +10,8 @@ export default function InputFilter(props) {
   const [op, setOp] = useState("");
   const [inputValue, setValue] = useState(null);
   const [isNumber, setType] = useState(true);
-  const [condition, setCondition] = useState([]);
+  const [condition, setCondition] = useState(props.conditionList);
+  const Server_IP = import.meta.env.VITE_SERVER_IP;
 
   //node process
   const addNodeById = (nodes, targetId, newNode) => {
@@ -94,6 +95,7 @@ export default function InputFilter(props) {
         
           const updated = addNodeById(condition, targetId, newNode);
           setCondition(updated);
+          updateCondition(condition);
     }
 
     props.setColumn({"id": -1, "value": ""});
@@ -103,10 +105,35 @@ export default function InputFilter(props) {
   const handleDel = (targetId) => {
     const updated = deleteNodeById(condition, targetId);
     setCondition(updated);
+    updateCondition(condition);
     if(findValueById(updated, andTarget) === null){
         setTarget(0);
     }
   }
+
+  const updateCondition = async (nodes) => {
+    try {
+      const res = await fetch(`${Server_IP}/api/v1/condition`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          processId: props.processId,
+          condition: nodes // 전체 condition 트리 통째로 보냄
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.isSuccess) {
+        alert(data.message);
+        return;
+      }
+    } catch {
+      alert("조건 추가 중 오류가 발생했습니다.");
+    }
+  };
 
   //view node
   const viewConditionTree = (nodes) => {
@@ -198,8 +225,12 @@ export default function InputFilter(props) {
   }
   
   useEffect(()=>{
-    handleSumbit(andTarget);
-  }, [op])
+    console.log(props.conditionList);
+    if (op !== "" && props.column.id >= 0 && inputValue !== null) {
+      handleSumbit(andTarget);
+      setOp("");
+    }
+  }, [op, props.column, inputValue])
 
   return (
     <div className='container'>
@@ -222,10 +253,10 @@ export default function InputFilter(props) {
             </div>
         </div>
         <div className='contents-button'>
-            <Link className='button-cancel' to='/column'>
+            <Link className='button-cancel' to={`/column/${props.processId}`}>
                 <p className='cancel-text'>뒤로 가기</p>
             </Link>
-            <Link className='button-continue' to='/result'>
+            <Link className='button-continue' to={`/result/${props.processId}`}>
                 <p className='continue-text'>계속</p>
             </Link>
         </div>

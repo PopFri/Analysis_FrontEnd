@@ -68,7 +68,7 @@ const FilteringAnalysis = ({processAnalysis}) => {
                 <div className='analysis-column-container'>
                   {columnList.map((column, index) => (
                     <div className='analysis-column-list' key={index}>
-                      <p className='column-name'>{column.name}</p>
+                      <p className='column-name'>{column.columnName}</p>
                     </div>
                   ))}
                 </div>

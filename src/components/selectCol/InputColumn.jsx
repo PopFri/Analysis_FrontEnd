@@ -72,7 +72,7 @@ export default function InputColumn(props) {
             console.error('컬럼 조회 실패:', data.message);
             return;
             }
-            setColumn(data.result); // ✅ 컬럼 배열로 설정
+            setColumn(data.result); 
         } catch (err) {
             console.error('컬럼 조회 중 에러:', err);
         }
