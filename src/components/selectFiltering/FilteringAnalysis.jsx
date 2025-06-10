@@ -52,7 +52,7 @@ const FilteringAnalysis = ({processAnalysis}) => {
   }, [processAnalysis]);
 
   const executionHandler = () => {
-    navigate(`/column/${processAnalysis}`);
+    navigate(`/result/${processAnalysis}`);
   }
   
   return (

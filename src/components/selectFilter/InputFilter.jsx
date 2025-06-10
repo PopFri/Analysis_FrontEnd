@@ -13,32 +13,6 @@ export default function InputFilter(props) {
   const [condition, setCondition] = useState([]);
   const Server_IP = import.meta.env.VITE_SERVER_IP;
 
-  const parseConditionString = (conditionStr) => {
-  const ops = [">=", "<=", "!=", "==", ">", "<"];
-    for (const operator of ops) {
-      const parts = conditionStr.split(operator);
-      if (parts.length === 2) {
-        const [column, value] = parts.map(s => s.trim().replace(/^"|"$/g, '')); // 따옴표 제거
-        return { column, op: operator, value };
-      }
-    }
-    throw new Error("지원되지 않는 조건 형식: " + conditionStr);
-  };
-
-  const convertConditionList = (conditionList) => {
-    return conditionList.map(item => {
-      const { column, op, value } = parseConditionString(item.condition);
-      return {
-        id: item.conditionId,
-        str_conditinon: item.condition,
-        column,
-        op,
-        value,
-        condition: []  // 서브 조건이 있다면 이후에 재귀로 넣을 수 있음
-      };
-    });
-  };
-
   //node process
   const addNodeById = (nodes, targetId, newNode) => {
     if (targetId == 0){
@@ -248,13 +222,6 @@ export default function InputFilter(props) {
       )
     }
   }
-
-  useEffect(() => {
-    if (props.conditionList?.length > 0) {
-      const parsed = convertConditionList(props.conditionList);
-      setCondition(parsed);
-    }
-  }, [props.conditionList]);
   
   useEffect(()=>{
     if (op !== "" && props.column.id >= 0 && inputValue !== null) {

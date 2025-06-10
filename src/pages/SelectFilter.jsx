@@ -8,7 +8,6 @@ import '../styles/selectFilter/selectFilter.css'
 export default function SelectFilter() {
   const [column, setColumn] = useState({"id": -1, "value": ""});
   const [columnList, setColumnList] = useState([]);
-  const [conditionList, setConditionList] = useState([]);
   const { processId } = useParams();
   const Server_IP = import.meta.env.VITE_SERVER_IP;
   const loadProcessColumn = async (processId) => {
@@ -28,26 +27,8 @@ export default function SelectFilter() {
       }
   };
 
-  const loadProcessCondition = async (processId) => {
-    try {
-        const res = await fetch(`${Server_IP}/api/v1/condition?processId=${processId}`, {
-            method: 'GET',
-        });
-        const data = await res.json();
-        setConditionList(data.result);
-        if (!res.ok || !data.isSuccess) {
-            alert(data.message); 
-            return;
-        }
-
-    } catch {
-        alert("프로세스 생성 중 오류가 발생했습니다.");
-    }
-  };
-
   useEffect(() => {
         loadProcessColumn(processId);
-        loadProcessCondition(processId);
     }, []);
   return (
     <div className='selectFilter'>
@@ -58,7 +39,7 @@ export default function SelectFilter() {
           <p className='selectFilter-title'>필터링 입력</p>
           <ColumnTable column = {column} setColumn={setColumn} columnList = {columnList} />
         </div>
-        <InputFilter column = {column} setColumn = {setColumn} conditionList={conditionList} processId={processId}/>
+        <InputFilter column = {column} setColumn = {setColumn} processId={processId}/>
       </div>
     </div>
   )

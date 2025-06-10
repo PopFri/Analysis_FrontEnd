@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import '../../styles/selectFiltering/FilteringConditionList.css'
 import FilteringListPagination from './FilteringListPagination';
 
@@ -8,6 +8,7 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
     const [processName, setProcessName] = useState('');
     const [page, setPage] = useState(1);
     const itemsPerPage = 9;
+    const navigate = useNavigate();
     const Server_IP = import.meta.env.VITE_SERVER_IP;
     
     // 페이지별 프로세스 목록 잘라내기
@@ -39,7 +40,8 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
             }
 
             setProcessName("");
-            setShowCreateProcessModal(false);   
+            setShowCreateProcessModal(false);
+            navigate(`/column/${data.result}`) 
         } catch {
             alert("프로세스 생성 중 오류가 발생했습니다.");
         }
