@@ -41,14 +41,30 @@ const FilteringConditionList = ({processList, processAnalysis, setProcessAnalysi
 
             setProcessName("");
             setShowCreateProcessModal(false);
-            navigate(`/column/${data.result}`) 
+            navigate(`/column/${data.result.processId}`) 
         } catch {
             alert("프로세스 생성 중 오류가 발생했습니다.");
         }
     };
 
-    const deleteProcess = (id) => {
-        console.log('delete ' + `${id}`);
+    const deleteProcess = async(id) => {
+        try {
+            const res = await fetch(`${Server_IP}/api/v1/process?id=${id}`, {
+                method: 'DELETE',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await res.json();
+
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
+        } catch {
+            alert("프로세스 삭제 중 오류가 발생했습니다.");
+        }
     }
 
     const toggleCreateProcessModal = () => {

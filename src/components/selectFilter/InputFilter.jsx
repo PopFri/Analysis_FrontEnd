@@ -71,11 +71,12 @@ export default function InputFilter(props) {
     if(isNumber)
       value = input.value;
     else
-      value = '"' + input.value.trim() + '"';
+      value = input.value.trim();
 
     setValue(value);
     input.value = '';
   }
+
   //action handle
   const handleSumbit = (targetId) => {
     if(op == null || props.column == null || inputValue == null)

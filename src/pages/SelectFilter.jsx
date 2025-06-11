@@ -28,8 +28,8 @@ export default function SelectFilter() {
   };
 
   useEffect(() => {
-        loadProcessColumn(processId);
-    }, []);
+    loadProcessColumn(processId);
+  }, []);
   return (
     <div className='selectFilter'>
       <div className='backgroud' />
