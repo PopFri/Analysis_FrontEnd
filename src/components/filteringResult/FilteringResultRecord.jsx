@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { resultRecordData } from '../../../public/data/columnTable'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import '../../styles/filteringResult/FilteringResultRecord.css'
 
 const FilteringResultRecord = () => {
     const [recordData, setRecordData] = useState([]);
     const [recordDataModal, setRecordDataModal] = useState(false);
+    const { processId } = useParams();
+    const Server_IP = import.meta.env.VITE_SERVER_IP;
+    
 
     const recordModalHandler = () => {
         setRecordDataModal(prev => !prev);
     }
-    useEffect(() => {
-        setRecordData(resultRecordData.result.data)
-    }, [])
 
     return (
         <div className='filtering-result-record-container'>
@@ -23,14 +23,14 @@ const FilteringResultRecord = () => {
                 <div className="result-record-table">
                     {recordData.map((data, index) => (
                     <div className="record-group" key={index}>
-                        <div className="record-date">{data.date}</div> 
-                            {data.dataList.map((item, idx) => (
+                        <div className="record-date">{data.time}</div> 
+                            {data.conditionList?.map((item, idx) => (
                         <div className="record-table-row" key={idx}> 
                             <div className="record-table-condition">
                                 {item.condition}
                             </div>
                             <div className="record-table-count">
-                                {item.count}
+                                {item.successCount}
                             </div>
                         </div>
                         ))}
@@ -44,14 +44,14 @@ const FilteringResultRecord = () => {
                         <div className="record-modal-scroll-area">
                             {recordData.map((data, index) => (
                             <div className="record-group-modal" key={index}>
-                                <div className="record-date">{data.date}</div> 
-                                {data.dataList.map((item, idx) => (
+                                <div className="record-date">{data.time}</div> 
+                                {data.conditionList?.map((item, idx) => (
                                 <div className="record-table-row" key={idx}> 
                                     <div className="record-table-condition">
                                     {item.condition}
                                     </div>
                                     <div className="record-table-count">
-                                    {item.count}
+                                    {item.successCount}
                                     </div>
                                 </div>
                                 ))}

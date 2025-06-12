@@ -64,7 +64,7 @@ export default function FilteringResult() {
                     <AnalysisColumn columnList={columnList}/>
                     <FilteringConditionColumn conditionList={conditionList}/>
                 </div>
-                <OutputResult />
+                <OutputResult columnList={columnList}/>
                 <div className='filtering-result-record-container'>
                     <FilteringResultGraph />
                     <FilteringResultRecord />
