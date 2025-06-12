@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import React from 'react'
 import '../../styles/filteringResult/FilteringResultGraph.css'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const FilteringResultGraph = () => {
-    const [graphData, setGraphData] = useState([]);
-    const [totalCount, setTotalCount] = useState(0);
+const FilteringResultGraph = ({resultData, totalCount}) => {
     const CustomizedAxisTick = ({ x, y, payload }) => {
         const MAX_LENGTH = 7; //  최대 표시 글자 수
         const text = payload.value.length > MAX_LENGTH
@@ -29,30 +26,7 @@ const FilteringResultGraph = () => {
     };
     const barSize = 40;
     const barGap = 10;
-    const chartWidth = graphData.length * (barSize + barGap) + 90;
-    const { processId } = useParams();
-    const Server_IP = import.meta.env.VITE_SERVER_IP;
-    const loadGraphData = async () => {
-        try {
-            const res = await fetch(`${Server_IP}/api/v1/result/success?processId=${processId}`, {
-                method: 'GET',
-            });
-            const data = await res.json();
-            
-            if (!res.ok || !data.isSuccess) {
-                alert(data.message); 
-                return;
-            }
-            setGraphData(data.result.conditionList);
-            setTotalCount(data.result.totalCount);
-        } catch {
-            alert("프로세스 생성 중 오류가 발생했습니다.");
-        }
-    };
-
-    useEffect(() => {
-        loadGraphData();
-    }, []);
+    const chartWidth = resultData.length * (barSize + barGap) + 90;
 
     return (
         <div className='filtering-result-graph-container'>
@@ -68,7 +42,7 @@ const FilteringResultGraph = () => {
                         <BarChart
                         width={chartWidth}
                         height={260}
-                        data={graphData}
+                        data={resultData}
                         margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
                         barCategoryGap={barGap}
                         >

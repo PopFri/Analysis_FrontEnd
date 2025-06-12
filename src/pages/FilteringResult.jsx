@@ -12,6 +12,8 @@ import FilteringResultRecord from '../components/filteringResult/FilteringResult
 export default function FilteringResult() {
     const [columnList, setColumnList] = useState([]);
     const [conditionList, setConditionList] = useState([]);
+    const [resultData, setResultData] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
     const { processId } = useParams();
     const navigate = useNavigate();
     const Server_IP = import.meta.env.VITE_SERVER_IP;
@@ -34,24 +36,44 @@ export default function FilteringResult() {
     };
 
     const loadProcessCondition = async () => {
-    try {
-        const res = await fetch(`${Server_IP}/api/v1/condition?processId=${processId}`, {
-            method: 'GET',
-        });
-        const data = await res.json();
-        setConditionList(data.result);
-        if (!res.ok || !data.isSuccess) {
-            alert(data.message); 
-            return;
-        }
+        try {
+            const res = await fetch(`${Server_IP}/api/v1/condition?processId=${processId}`, {
+                method: 'GET',
+            });
+            const data = await res.json();
+            setConditionList(data.result);
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
 
-    } catch {
-        alert("조건 로드 중 오류가 발생했습니다.");
-    }
+        } catch {
+            alert("조건 로드 중 오류가 발생했습니다.");
+        }
     };
+
+    const loadResultData = async () => {
+        try {
+            const res = await fetch(`${Server_IP}/api/v1/result/success?processId=${processId}`, {
+                method: 'GET',
+            });
+            const data = await res.json();
+            
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
+            setResultData(data.result.conditionList);
+            setTotalCount(data.result.totalCount);
+        } catch {
+            alert("프로세스 생성 중 오류가 발생했습니다.");
+        }
+    };
+
     useEffect(() => {
         loadProcessColumn();
         loadProcessCondition();
+        loadResultData();
     }, []);
 
     return (
@@ -66,8 +88,8 @@ export default function FilteringResult() {
                 </div>
                 <OutputResult columnList={columnList}/>
                 <div className='filtering-result-record-container'>
-                    <FilteringResultGraph />
-                    <FilteringResultRecord />
+                    <FilteringResultGraph resultData={resultData} totalCount={totalCount}/>
+                    <FilteringResultRecord resultData={resultData}/>
                     <button className='go-to-home-button' onClick={() => navigate('/home')}>
                         홈으로
                     </button>
