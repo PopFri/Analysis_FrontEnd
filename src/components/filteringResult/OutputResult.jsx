@@ -10,9 +10,37 @@ const OutputResult = ({ columnList }) => {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(1);
     const [logDataList, setLogDataList] = useState([]);
+    const [dataType, setDataType] = useState("success");
+    const [successOrFailData, setSuccessOrFailData] = useState([]);
+    const [totalDataCount, setTotalDataCount] = useState([]);
+    const [recordDataModal, setRecordDataModal] = useState(false);
+    const [modalPage, setModalPage] = useState(1);
 
     const { processId } = useParams();
     const Server_IP = import.meta.env.VITE_SERVER_IP;
+
+    const recordModalHandler = () => {
+        setRecordDataModal(prev => !prev);
+    }
+
+    const loadResultData = async (page) => {
+        try {
+            const res = await fetch(`${Server_IP}/api/v1/result/record/${dataType}?processId=${processId}&page=${page}`, {
+                method: 'GET',
+            });
+            const data = await res.json();
+            
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
+            setSuccessOrFailData(data.result.data);
+            setTotalDataCount(data.result.totalCount);
+            console.log(data.result);
+        } catch {
+            alert("데이터 로드 오류가 발생했습니다.");
+        }
+    };
 
     const loadLogData = async () => {
         try {
@@ -39,6 +67,10 @@ const OutputResult = ({ columnList }) => {
         loadLogData();
     }, []);
 
+    useEffect(() => {
+        loadResultData(modalPage);
+    }, [modalPage, dataType]);
+
     const indexColor = (index) => {
         return sortIndex === index ? '#1ED863' : '#FFFFFF';
     };
@@ -58,7 +90,7 @@ const OutputResult = ({ columnList }) => {
                 alert(data.message);
                 return;
             }
-            setLogDataList(data.result);
+            setLogDataList(data.result.data);
             const itemCount = data.result.length;
             const itemsPerPage = 12;
             const total = Math.ceil(itemCount / itemsPerPage);
@@ -80,6 +112,7 @@ const OutputResult = ({ columnList }) => {
             <div className="result-list">
                 <div className="result-title">
                     <p className="result-title-text">결과 출력</p>
+                    <div className='result-record-modal-button' onClick={() => recordModalHandler()}>더보기</div>
                 </div>
                 <div className="table-sorting">
                     <img src="/images/sortingIcon.png" className="table-sorting-icon" />
@@ -144,6 +177,48 @@ const OutputResult = ({ columnList }) => {
 
                 <ResultPagination page={page} setPage={setPage} totalPage={totalPage} />
             </div>
+            {recordDataModal && (
+                <div className="result-record-table-modal">
+                    <div className="record-modal-content">
+                        <div className="record-modal-data-title">
+                            {dataType} Data List
+                        </div>
+                        <div className="record-modal-scroll-area">
+                            {successOrFailData && successOrFailData.length > 0 ? (
+                                successOrFailData.map((data, index) => (
+                                <div className="record-group-modal" key={index}>
+                                    <div className="record-date">{data.createdAt}</div> 
+                                    {data.dataList.map((item, idx) => (
+                                        <div key={idx}>
+                                            <div className="record-table-row"> 
+                                                <div className="record-modal-column">
+                                                    {item.column}
+                                                </div>
+                                                <div className="record-modal-value">
+                                                    {item.value}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                ))
+                            ) : (
+                                <div className="record-no-data">
+                                    <div className="record-no-data-text">
+                                        데이터가 없습니다.
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <ResultPagination page={modalPage} setPage={setModalPage} totalPage={Math.ceil(totalDataCount/12)} />
+                        <div className="record-modal-button-container">
+                            <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => setDataType("success")}>성공 데이터</div>
+                            <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => setDataType("fail")}>실패 데이터</div>
+                        </div>
+                        <div className="record-modal-cancel-button" onClick={recordModalHandler}>취소</div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

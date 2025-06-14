@@ -26,6 +26,14 @@
     }
 }
 
+.result-record-modal-button {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-family: 'Freesentation-6SemiBold';
+    margin-left: 450px;
+    margin-top: 3px;
+}
+
 .result-list-table {
     display: flex;
     flex-direction: column;

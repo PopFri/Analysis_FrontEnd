@@ -24,13 +24,6 @@
             font-size: 18px;
             color: #FFFFFF;
         }
-        .result-record-modal-button {
-            color: #FFFFFF;
-            font-size: 13px;
-            font-family: 'Freesentation-6SemiBold';
-            margin-left: 210px;
-            margin-top: 3px;
-        }
     }
 }
 
@@ -61,6 +54,32 @@
   
 .record-table-condition {
     width: 60%;
+    padding: 10px;
+    border-right: 1px solid #313438;
+    border-bottom: 1px solid #313438;
+    background-color: #2E2F32;
+    font-family: 'Freesentation-5Medium';
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.record-header-condition {
+    width: 60%;
+    padding: 10px;
+    border-right: 1px solid #313438;
+    border-bottom: 1px solid #313438;
+    background-color: #2E2F32;
+    font-family: 'Freesentation-5Medium';
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.record-header-count {
+    width: 30%;
     padding: 10px;
     border-right: 1px solid #313438;
     border-bottom: 1px solid #313438;
