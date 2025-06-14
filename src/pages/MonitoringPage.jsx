@@ -7,7 +7,7 @@ export default function MonitoringPage() {
   return (
     <div className='monitoring'>
         <div className='backgroud' />
-        <Header />
+        <Header location={"monitoring"}/>
         
     </div>
   )

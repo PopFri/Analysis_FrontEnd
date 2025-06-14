@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className='home'>
         <div className='backgroud' />
-        <Header />
+        <Header location={'home'}/>
         <div className='filtering-container'>
           <div>
             <p className='filtering-select-title'>필터링 조건 선택</p>
