@@ -40,11 +40,11 @@ const FilteringResultGraph = ({resultData, totalCount}) => {
                 <div className='result-graph'>
                     <div style={{ width: chartWidth }}>
                         <BarChart
-                        width={chartWidth}
-                        height={260}
-                        data={resultData}
-                        margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
-                        barCategoryGap={barGap}
+                            width={chartWidth}
+                            height={260}
+                            data={resultData}
+                            margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
+                            barCategoryGap={barGap}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="condition" tick={<CustomizedAxisTick />} interval={0} />
