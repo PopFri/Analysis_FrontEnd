@@ -1,10 +1,11 @@
 .overview-container {
     margin: 10px;
+    margin-bottom: 30px;
 }
 
 .overview-list {
-    width: 427px;
-    height: 306px;
+    width: 550px;
+    height: 300px;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;

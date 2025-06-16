@@ -43,18 +43,18 @@ const StatisticsGender = () => {
         <div className='statistics-container'>
             <div className='statistics-button-container'>
                 <div className='statistics-button-wrapper'>
-                <div
-                    className={`statistics-button ${selectedGender === 'male' ? 'active' : ''}`}
-                    onClick={() => setSelectedGender('male')}
-                >
-                    남성
-                </div>
-                <div
-                    className={`statistics-button ${selectedGender === 'female' ? 'active' : ''}`}
-                    onClick={() => setSelectedGender('female')}
-                >
-                    여성
-                </div>
+                    <div
+                        className={`statistics-button ${selectedGender === 'male' ? 'active' : ''}`}
+                        onClick={() => setSelectedGender('male')}
+                    >
+                        남성
+                    </div>
+                    <div
+                        className={`statistics-button ${selectedGender === 'female' ? 'active' : ''}`}
+                        onClick={() => setSelectedGender('female')}
+                    >
+                        여성
+                    </div>
                 </div>
             </div>
             <div className="date-range-toggle">

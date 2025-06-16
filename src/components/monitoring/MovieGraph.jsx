@@ -23,28 +23,18 @@ const MovieGraph = ({data}) => {
             fontSize={14}
             textAnchor="start"
             >
-            {value}분
+            {value}번
             </text>
         );
     };
     
     return (
-        <div
-            style={{
-            width: '100%',
-            height: `${Math.max(data?.length * 45, 300)}px`,
-            backgroundColor: '#1C1E1C',
-            padding: '10px',
-            borderRadius: '10px',
-            position: 'relative',
-            }}
-        >
-            <ResponsiveContainer width="97%" height="100%">
+        <div className='movie-graph-container'>
+            <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     layout="vertical"
                     data={data}
-                    margin={{ top: 20, right: 50, left: 20, bottom: 20 }}
-                    barCategoryGap={15}
+                    margin={{ top: 10, right: 50, left: 10, bottom: 10 }}
                 >
                     <XAxis type="number" hide />
                     <YAxis type="category" dataKey="name" hide /> 
@@ -52,10 +42,9 @@ const MovieGraph = ({data}) => {
                         <text
                             key={`label-${index}`}
                             x={10}
-                            y={index * (41) + 10 / 2 + 20} 
+                            y={index * (53) + 20} 
                             fill="#fff"
                             fontSize={14}
-                            alignmentBaseline="middle"
                         >
                             {entry.name}
                         </text>

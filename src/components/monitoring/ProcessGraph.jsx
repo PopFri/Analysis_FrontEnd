@@ -55,9 +55,9 @@ const ProcessGraph = () => {
                     <div style={{ width: chartWidth }}>
                         <BarChart
                             width={chartWidth}
-                            height={260}
+                            height={350}
                             data={data}
-                            margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
+                            margin={{ top: 50, right: 20, bottom: 0 }}
                             barCategoryGap={barGap}
                         >
                             <CartesianGrid strokeDasharray="3 3" />

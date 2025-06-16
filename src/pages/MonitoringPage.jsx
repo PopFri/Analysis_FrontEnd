@@ -23,11 +23,11 @@ export default function MonitoringPage() {
             </div>
             <div className='statistics-row'>
                 <div className='activity-statistics'>
-                    <p className='activity-graph-title'>전체 활동 그래프</p>
+                    <p className='statistics-title'>성별 활동 통계</p>
                     <StatisticsGender />
                 </div>
-                <div className='activity-statistics'>
-                    <p className='activity-graph-title'>전체 활동 그래프</p>
+                <div className='activity-statistics' style={{marginRight : '70px' }}>
+                    <p className='statistics-title'>연령별 활동 통계</p>
                     <StatisticsAge />
                 </div>
             </div>

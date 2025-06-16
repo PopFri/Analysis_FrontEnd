@@ -3,8 +3,8 @@
 }
 
 .process-graph-wrapper {
-    width: 427px;
-    height: 306px;
+    width: 550px;
+    height: 425px;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;
@@ -24,6 +24,7 @@
         }
     }
     .process-graph {
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 }

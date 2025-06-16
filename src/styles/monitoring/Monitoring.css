@@ -8,25 +8,65 @@
     }
 }
 
+.activity-graph {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
 .activity-graph-title {
     font-family: "Freesentation-9Black";
     font-size: 25px;
     color: #1ED863;
     margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.statistics-title {
+    font-family: "Freesentation-9Black";
+    font-size: 25px;
+    color: #1ED863;
     margin-bottom: 10px;
 }
 
 
 .statistics-row {
-  display: flex;
-  flex-direction: row;
-  gap: 40px; /* 두 박스 사이 간격 */
-  justify-content: space-between; /* 필요 시 */
+    display: flex;
+    flex-direction: row;
+    gap: 40px; /* 두 박스 사이 간격 */
 }
 
 .activity-statistics{
-  flex: 1; /* 같은 비율로 너비 분배 */
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* 제목과 그래프 사이 간격 */
+    display: flex;
+    flex-direction: column;
+    
+    gap: 10px;
+    margin-left: 40px;
+}
+
+.monitoring-container::-webkit-scrollbar {
+    width: 3.9px;
+    height: 3.9px;
+}
+
+.monitoring-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.monitoring-container::-webkit-scrollbar-thumb {
+    background-color: #555;
+    background-clip: padding-box;
+    border-radius: 20px;
+    
+}
+
+.monitoring-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    border: none;
+    box-shadow: none;
+    background-clip: padding-box;
+}
+
+.monitoring-container::-webkit-scrollbar-corner {
+    background: none;
+    display: block; 
 }

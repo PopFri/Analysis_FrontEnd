@@ -273,7 +273,7 @@
         background: transparent;
     }
 
-    .rrecord-modal-scroll-area::-webkit-scrollbar-thumb {
+    .record-modal-scroll-area::-webkit-scrollbar-thumb {
         background-color: #555;
         background-clip: padding-box;
         border-radius: 20px;

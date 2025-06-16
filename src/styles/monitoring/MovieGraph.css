@@ -2,7 +2,7 @@
     position: absolute;
     bottom: 1px;
     left: 1px;
-    width: 95.5%;
+    width: 94.9%;
     padding: 6px 14px;
     border-top: 1px solid #656363;
     color: #1ED863;
@@ -12,3 +12,12 @@
     transition: background-color 0.2s ease-in-out;
 }
 
+.movie-graph-container {
+    width: 550px;
+    height: 550px;
+    background-color: #1C1E1C;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 40px;
+}

@@ -1,13 +1,13 @@
 .statistics-button-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .statistics-button-wrapper {
     display: flex;
     width: 100%;
-    height: 20px;
+    height: 16px;
     gap: 12px;
 }
 
@@ -35,13 +35,13 @@
 .date-range-toggle {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .toggle-button-container {
     display: flex;             
     width: 100%;
-    height: 20px;
+    height: 16px;
     gap: 12px;                  
 }
 
