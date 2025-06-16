@@ -1,0 +1,14 @@
+.graph-detail-modal-button {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    width: 95.5%;
+    padding: 6px 14px;
+    border-top: 1px solid #656363;
+    color: #1ED863;
+    font-size: 15px;
+    font-family: 'Freesentation-6SemiBold';
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+

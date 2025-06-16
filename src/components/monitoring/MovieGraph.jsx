@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import '../../styles/monitoring/Statistics.css'
+import React from 'react'
+import '../../styles/monitoring/MovieGraph.css'
 import {
   BarChart,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   LabelList,
   ResponsiveContainer,
 } from 'recharts';
@@ -37,9 +36,10 @@ const MovieGraph = ({data}) => {
             backgroundColor: '#1C1E1C',
             padding: '10px',
             borderRadius: '10px',
+            position: 'relative',
             }}
         >
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="97%" height="100%">
                 <BarChart
                     layout="vertical"
                     data={data}
@@ -71,6 +71,9 @@ const MovieGraph = ({data}) => {
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>
+            <div style={{  display: 'flex', justifyContent: 'flex-start' }}>
+                <div className='graph-detail-modal-button'>더보기</div>
+            </div>
         </div>
     )
 }

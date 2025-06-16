@@ -14,7 +14,7 @@ import MovieGraph from './MovieGraph';
 const StatisticsGender = () => {
     const [data, setData] = useState([]);
     const [selectedGender, setSelectedGender] = useState('male');
-
+    const [selectedDay, setSelectedDay] = useState('day');
     const CustomLabel = ({ x, y, width, value }) => {
         const padding = 6;
         const labelX = x + width + padding;
@@ -59,9 +59,24 @@ const StatisticsGender = () => {
             </div>
             <div className="date-range-toggle">
                 <div className='toggle-button-container'>
-                    <div className="toggle-button active">일간</div>
-                    <div className="toggle-button">주간</div>
-                    <div className="toggle-button">월간</div>
+                    <div
+                        className={`toggle-button ${selectedDay === 'day' ? 'active' : ''}`}
+                        onClick={() => setSelectedDay('day')}
+                    >
+                        일간
+                    </div>
+                    <div
+                        className={`toggle-button ${selectedDay === 'week' ? 'active' : ''}`}
+                        onClick={() => setSelectedDay('week')}
+                    >
+                        주간
+                    </div>
+                    <div
+                        className={`toggle-button ${selectedDay === 'month' ? 'active' : ''}`}
+                        onClick={() => setSelectedDay('month')}
+                    >
+                        월간
+                    </div>
                 </div>
             </div>
             <div className='statistics-graph'>
