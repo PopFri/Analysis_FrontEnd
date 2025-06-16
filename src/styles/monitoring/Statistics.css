@@ -1,0 +1,74 @@
+.statistics-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.statistics-button-wrapper {
+    display: flex;
+    width: 100%;
+    height: 12px;
+    gap: 12px;
+}
+
+.statistics-button {
+    display: flex;
+    align-items: center;        
+    justify-content: center; 
+    text-align: center;
+    width: 50%;
+    padding: 8px 20px;
+    font-size: 10px;
+    font-family: 'Freesentation-6SemiBold';
+    border-radius: 12px;
+    background-color: #777676;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.statistics-button.active {
+    background-color: #1ED863;
+    color: #000000;
+}
+
+.date-range-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.toggle-button-container {
+    display: flex;             
+    width: 100%;
+    height: 12px;
+    gap: 12px;                  
+}
+
+.toggle-button {
+    display: flex;
+    align-items: center;        
+    justify-content: center; 
+    text-align: center;
+    width: 50%;
+    padding: 6px 18px;
+    font-size: 10px;
+    font-family: 'Freesentation-6SemiBold';
+    border-radius: 12px;
+    background-color: #777676;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.toggle-button.active {
+    background-color: #1ED863;
+    color: #000000;
+}
+
+.graph-title {
+    font-size: 15px;
+    font-family: 'Freesentation-7Bold';
+    color: #1ED863;
+    margin: 10px;
+}

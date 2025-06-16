@@ -1,0 +1,34 @@
+.monitoring {
+    width: 100%;
+    height: 100vh;
+    .monitoring-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: flex-end;
+        
+    }
+}
+
+.activity-graph-title {
+    font-family: "Freesentation-9Black";
+    font-size: 25px;
+    color: #1ED863;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+.statistics-row {
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* 두 박스 사이 간격 */
+  justify-content: space-between; /* 필요 시 */
+}
+
+.activity-statistics{
+  flex: 1; /* 같은 비율로 너비 분배 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 제목과 그래프 사이 간격 */
+}
