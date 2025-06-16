@@ -1,29 +1,32 @@
-.process-graph-container {
+.datagraph-container {
     margin: 10px;
 }
 
-.process-graph-wrapper {
+.datagraph-list {
     width: 427px;
     height: 306px;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;
     margin-right: 5px;
-    .process-graph-title {
+    overflow: auto;
+    .datagraph-title {
         display: flex;
         align-items: center;
         width: 100%;
         height: 47px;
         background-color: #1ED863;
         border-radius: 15px 15px 0 0;
-        .process-graph-title-text {
+        .datagraph-title-text {
             margin: 0px 20px;
             font-family: "Freesentation-7Bold";
             font-size: 18px;
             color: #FFFFFF;
         }
     }
-    .process-graph {
+    .data-graph {
+        width: 100%;
+        height: 250px; 
         overflow: auto;
     }
 }
