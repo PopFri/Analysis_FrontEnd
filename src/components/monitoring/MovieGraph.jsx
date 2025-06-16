@@ -11,10 +11,7 @@ import {
 
 const MovieGraph = ({data}) => {
     const [modal, setModal] = useState(false);
-    const top10Data = data
-        ?.slice()
-        .sort((a, b) => b.data - a.data)
-        .slice(0, 10);
+    const top10Data = data?.slice(0, 10);
     const CustomLabel = ({ x, y, width, value }) => {
         const padding = 6;
         const labelX = x + width + padding;
@@ -34,36 +31,35 @@ const MovieGraph = ({data}) => {
     
     return (
         <div className='movie-graph-container'>
-            <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                    layout="vertical"
-                    data={top10Data}
-                    margin={{ top: 10, right: 50, left: 10, bottom: 30 }}
+            <BarChart
+                layout="vertical"
+                width={550}
+                height={top10Data.length * 56}
+                data={top10Data}
+                margin={{ top: 10, right: 50, left: 10, bottom: 0 }}
+            >
+                <XAxis type="number" hide />
+                <YAxis type="category" dataKey="name" hide />
+                {top10Data.map((entry, index) => (
+                <text
+                    key={`label-${index}`}
+                    x={10}
+                    y={index * 55 + 20}
+                    fill="#fff"
+                    fontSize={14}
                 >
-                    <XAxis type="number" hide />
-                    <YAxis type="category" dataKey="name" hide /> 
-                    {top10Data?.map((entry, index) => (
-                        <text
-                            key={`label-${index}`}
-                            x={10}
-                            y={index * (56) + 20} 
-                            fill="#fff"
-                            fontSize={14}
-                        >
-                            {entry.name}
-                        </text>
-                    ))}
-
-                    <Bar
-                    dataKey="data"
-                    fill="#3A3A3A"
-                    radius={[6, 6, 6, 6]}
-                    barSize={12}
-                    >
-                        <LabelList dataKey="data" content={<CustomLabel />} />
-                    </Bar>
-                </BarChart>
-            </ResponsiveContainer>
+                    {entry.name}
+                </text>
+                ))}
+                <Bar
+                dataKey="data"
+                fill="#3A3A3A"
+                radius={[6, 6, 6, 6]}
+                barSize={12}
+                >
+                <LabelList dataKey="data" content={<CustomLabel />} />
+                </Bar>
+            </BarChart>
             <div style={{  display: 'flex', justifyContent: 'flex-start' }}>
                 <div className='graph-detail-modal-button' onClick={() => setModal(true)}>더보기</div>
             </div>
