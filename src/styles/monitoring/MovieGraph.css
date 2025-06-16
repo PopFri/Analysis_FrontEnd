@@ -1,9 +1,9 @@
 .graph-detail-modal-button {
     position: absolute;
-    bottom: 1px;
+    bottom: 5px;
     left: 1px;
     width: 94.9%;
-    padding: 6px 14px;
+    padding: 10px 15px;
     border-top: 1px solid #656363;
     color: #1ED863;
     font-size: 15px;
@@ -14,10 +14,49 @@
 
 .movie-graph-container {
     width: 550px;
-    height: 550px;
+    height: 600px;
     background-color: #1C1E1C;
-    padding: 10px;
     border-radius: 10px;
     position: relative;
     margin-bottom: 40px;
+}
+
+.movie-graph-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .movie-graph-modal-container {
+        position: relative;
+        width: 550px;
+        height: 810px;
+        background-color: #1C1E1C;
+        border-radius: 10px;
+        .modal-graph {
+            margin-top: 10px;
+            width: 550px;
+            height: 750px;
+            overflow: auto;
+        }
+    }
+
+    .modal-close-button {
+        position: absolute;
+        bottom: 10px;
+        left: 1px;
+        width: 94%;
+        padding: 10px 15px;
+        border-top: 1px solid #656363;
+        color: #1ED863;
+        font-size: 15px;
+        font-family: 'Freesentation-6SemiBold';
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+    }
 }

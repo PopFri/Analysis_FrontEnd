@@ -44,6 +44,10 @@ const StatisticsAge = () => {
                     </div>
                 </div>
             </div>
+            <div className='selected-option'>
+                {selectedAge}대
+                <div className='selected-option-text'> 활동 통계</div>
+            </div>
             <div className="date-range-toggle">
                 <div className='toggle-button-container'>
                     <div

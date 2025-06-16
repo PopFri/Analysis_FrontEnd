@@ -14,6 +14,7 @@ import MovieGraph from './MovieGraph';
 const StatisticsGender = () => {
     const [data, setData] = useState([]);
     const [selectedGender, setSelectedGender] = useState('male');
+    const [selectedOption, setSelecteOption] = useState('남성');
     const [selectedDay, setSelectedDay] = useState('day');
     const CustomLabel = ({ x, y, width, value }) => {
         const padding = 6;
@@ -45,17 +46,21 @@ const StatisticsGender = () => {
                 <div className='statistics-button-wrapper'>
                     <div
                         className={`statistics-button ${selectedGender === 'male' ? 'active' : ''}`}
-                        onClick={() => setSelectedGender('male')}
+                        onClick={() => {setSelectedGender('male'); setSelecteOption('남성')}}
                     >
                         남성
                     </div>
                     <div
                         className={`statistics-button ${selectedGender === 'female' ? 'active' : ''}`}
-                        onClick={() => setSelectedGender('female')}
+                        onClick={() => {setSelectedGender('female'); setSelecteOption('여성')}}
                     >
                         여성
                     </div>
                 </div>
+            </div>
+            <div className='selected-option'>
+                {selectedOption}
+                <div className='selected-option-text'> 활동 통계</div>
             </div>
             <div className="date-range-toggle">
                 <div className='toggle-button-container'>

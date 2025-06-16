@@ -9,6 +9,7 @@
     width: 100%;
     height: 16px;
     gap: 12px;
+    margin-bottom: 10px;
 }
 
 .statistics-button {
@@ -35,7 +36,7 @@
 .date-range-toggle {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .toggle-button-container {
@@ -61,14 +62,29 @@
     transition: all 0.2s ease-in-out;
 }
 
+.selected-option {
+    display: flex;
+    font-size: 20px;
+    font-family: 'Freesentation-7Bold';
+    color: #FFFFFF;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.selected-option-text {
+    font-size: 20px;
+    font-family: 'Freesentation-7Bold';
+    color: #1ED863;
+}
+
 .toggle-button.active {
     background-color: #1ED863;
     color: #000000;
 }
 
 .graph-title {
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Freesentation-7Bold';
     color: #1ED863;
-    margin: 10px;
+    margin: 5px;
 }
