@@ -36,7 +36,6 @@ const OutputResult = ({ columnList }) => {
             }
             setSuccessOrFailData(data.result.data);
             setTotalDataCount(data.result.totalCount);
-            console.log(data.result);
         } catch {
             alert("데이터 로드 오류가 발생했습니다.");
         }
@@ -68,7 +67,7 @@ const OutputResult = ({ columnList }) => {
     }, []);
 
     useEffect(() => {
-        loadResultData(modalPage);
+        loadResultData(modalPage - 1);
     }, [modalPage, dataType]);
 
     const indexColor = (index) => {
@@ -174,7 +173,6 @@ const OutputResult = ({ columnList }) => {
                             })}
                     </div>
                 </div>
-
                 <ResultPagination page={page} setPage={setPage} totalPage={totalPage} />
             </div>
             {recordDataModal && (
@@ -187,7 +185,10 @@ const OutputResult = ({ columnList }) => {
                             {successOrFailData && successOrFailData.length > 0 ? (
                                 successOrFailData.map((data, index) => (
                                 <div className="record-group-modal" key={index}>
-                                    <div className="record-date">{data.createdAt}</div> 
+                                    <div className="record-logid">
+                                        LogId: {data.logId} 
+                                    </div> 
+                                    
                                     {data.dataList.map((item, idx) => (
                                         <div key={idx}>
                                             <div className="record-table-row"> 
@@ -210,7 +211,7 @@ const OutputResult = ({ columnList }) => {
                                 </div>
                             )}
                         </div>
-                        <ResultPagination page={modalPage} setPage={setModalPage} totalPage={Math.ceil(totalDataCount/12)} />
+                        <ResultPagination page={modalPage} setPage={setModalPage} totalPage={Math.ceil(totalDataCount / 12) - 1} />
                         <div className="record-modal-button-container">
                             <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => setDataType("success")}>성공 데이터</div>
                             <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => setDataType("fail")}>실패 데이터</div>
