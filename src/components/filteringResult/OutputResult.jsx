@@ -23,6 +23,18 @@ const OutputResult = ({ columnList }) => {
         setRecordDataModal(prev => !prev);
     }
 
+    function formatTimestamp(input) {
+        if (!input) return "";
+
+        const [datePart, timePart] = input.split('T'); 
+        if (!datePart || !timePart) return "";
+
+        const [time, micros] = timePart.split('.'); 
+        const millis = micros ? micros.slice(0, 2) : "00"; 
+
+        return `${datePart} ${time}.${millis}`;
+    }
+
     const loadResultData = async (page) => {
         try {
             const res = await fetch(`${Server_IP}/api/v1/result/record/${dataType}?processId=${processId}&page=${page}`, {
@@ -36,7 +48,6 @@ const OutputResult = ({ columnList }) => {
             }
             setSuccessOrFailData(data.result.data);
             setTotalDataCount(data.result.totalCount);
-            console.log(data.result);
         } catch {
             alert("데이터 로드 오류가 발생했습니다.");
         }
@@ -68,7 +79,7 @@ const OutputResult = ({ columnList }) => {
     }, []);
 
     useEffect(() => {
-        loadResultData(modalPage);
+        loadResultData(modalPage - 1);
     }, [modalPage, dataType]);
 
     const indexColor = (index) => {
@@ -174,7 +185,6 @@ const OutputResult = ({ columnList }) => {
                             })}
                     </div>
                 </div>
-
                 <ResultPagination page={page} setPage={setPage} totalPage={totalPage} />
             </div>
             {recordDataModal && (
@@ -187,7 +197,10 @@ const OutputResult = ({ columnList }) => {
                             {successOrFailData && successOrFailData.length > 0 ? (
                                 successOrFailData.map((data, index) => (
                                 <div className="record-group-modal" key={index}>
-                                    <div className="record-date">{data.createdAt}</div> 
+                                    <div className="record-date">
+                                        {formatTimestamp(data.createdAt)} (LogId: {data.logId}) 
+                                    </div> 
+                                    
                                     {data.dataList.map((item, idx) => (
                                         <div key={idx}>
                                             <div className="record-table-row"> 
@@ -204,13 +217,19 @@ const OutputResult = ({ columnList }) => {
                                 ))
                             ) : (
                                 <div className="record-no-data">
-                                    <div className="record-no-data-text">
-                                        데이터가 없습니다.
-                                    </div>
+                                    <div className="record-no-data-text">데이터가 없습니다.</div>
                                 </div>
                             )}
                         </div>
-                        <ResultPagination page={modalPage} setPage={setModalPage} totalPage={Math.ceil(totalDataCount/12)} />
+                        {successOrFailData && successOrFailData.length > 0 ? (
+                        <ResultPagination
+                            page={modalPage}
+                            setPage={setModalPage}
+                            totalPage={Math.max(1, Math.ceil(Number(totalDataCount || 0) / 12))}
+                        />
+                        ) : (
+                        <div className="pagination-spacer" /> 
+                        )}
                         <div className="record-modal-button-container">
                             <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => setDataType("success")}>성공 데이터</div>
                             <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => setDataType("fail")}>실패 데이터</div>
