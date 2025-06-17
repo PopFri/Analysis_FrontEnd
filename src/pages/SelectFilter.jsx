@@ -30,10 +30,11 @@ export default function SelectFilter() {
   useEffect(() => {
     loadProcessColumn(processId);
   }, []);
+  
   return (
     <div className='selectFilter'>
       <div className='backgroud' />
-      <Header />
+      <Header location={'home'}/>
       <div className='selectFilter-contents'>
         <div>
           <p className='selectFilter-title'>필터링 입력</p>

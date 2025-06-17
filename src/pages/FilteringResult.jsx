@@ -79,7 +79,7 @@ export default function FilteringResult() {
     return (
         <div className='filtering-result'>
             <div className='backgroud' />
-            <Header />
+            <Header location={'home'}/>
             <div className='filtering-result-container'>
                 <div className='filtering-result-column'>
                     <p className='filtering-result-title'>필터링 결과 출력</p>

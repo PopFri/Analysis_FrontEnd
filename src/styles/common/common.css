@@ -22,17 +22,18 @@ body{
     .header-logo{
         width: 171.6px;
         height: 35.06px;
+        margin-right: 20px;
     }
     .header-link{
         display: flex;
-        width: 330px;
+        width: 660px;
         .link-container{
             display: flex;
             justify-content: center;
             align-items: center;
             width: 266px;
             height: 27.3px;
-            margin: 0 40px;
+            margin: 0 10px;
             text-decoration: none;
             border-bottom: 3.9px solid;
             .contianer-text{
