@@ -198,7 +198,7 @@ const OutputResult = ({ columnList }) => {
                                 successOrFailData.map((data, index) => (
                                 <div className="record-group-modal" key={index}>
                                     <div className="record-date">
-                                        {formatTimestamp(data.createdAt)} ({data.logId}) 
+                                        {formatTimestamp(data.createdAt)} (LogId: {data.logId}) 
                                     </div> 
                                     
                                     {data.dataList.map((item, idx) => (
