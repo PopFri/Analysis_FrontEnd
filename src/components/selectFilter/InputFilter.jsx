@@ -11,6 +11,7 @@ export default function InputFilter(props) {
   const [inputValue, setValue] = useState(null);
   const [isNumber, setType] = useState(true);
   const [condition, setCondition] = useState([]);
+  const Server_IP = import.meta.env.VITE_SERVER_IP;
 
   //node process
   const addNodeById = (nodes, targetId, newNode) => {
@@ -70,11 +71,12 @@ export default function InputFilter(props) {
     if(isNumber)
       value = input.value;
     else
-      value = '"' + input.value.trim() + '"';
+      value = input.value.trim();
 
     setValue(value);
     input.value = '';
   }
+
   //action handle
   const handleSumbit = (targetId) => {
     if(op == null || props.column == null || inputValue == null)
@@ -94,6 +96,7 @@ export default function InputFilter(props) {
         
           const updated = addNodeById(condition, targetId, newNode);
           setCondition(updated);
+          updateCondition(updated);
     }
 
     props.setColumn({"id": -1, "value": ""});
@@ -103,16 +106,40 @@ export default function InputFilter(props) {
   const handleDel = (targetId) => {
     const updated = deleteNodeById(condition, targetId);
     setCondition(updated);
+    updateCondition(updated);
     if(findValueById(updated, andTarget) === null){
         setTarget(0);
     }
   }
 
+  const updateCondition = async (nodes) => {
+    try {
+      const res = await fetch(`${Server_IP}/api/v1/condition`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          processId: props.processId,
+          condition: nodes 
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.isSuccess) {
+        alert(data.message);
+        return;
+      }
+    } catch {
+      alert("조건 추가 중 오류가 발생했습니다.");
+    }
+  };
+
   //view node
   const viewConditionTree = (nodes) => {
-    console.log(nodes);
     return nodes.map((node, index) => (
-        <>
+        <div key={index}>
             <div className='conditionList-container'>
                 <div className='container-condition'>
                     <div className='condition-andButton' onClick={() => {setTarget(node.id)}}>
@@ -126,7 +153,7 @@ export default function InputFilter(props) {
                 </div>
             </div>
             {(index + 1) != nodes.length ? <p className='conditionList-or'>OR</p>: null}
-        </>
+        </div>
     ));
   };
 
@@ -198,8 +225,11 @@ export default function InputFilter(props) {
   }
   
   useEffect(()=>{
-    handleSumbit(andTarget);
-  }, [op])
+    if (op !== "" && props.column.id >= 0 && inputValue !== null) {
+      handleSumbit(andTarget);
+      setOp("");
+    }
+  }, [op, props.column, inputValue])
 
   return (
     <div className='container'>
@@ -222,10 +252,10 @@ export default function InputFilter(props) {
             </div>
         </div>
         <div className='contents-button'>
-            <Link className='button-cancel' to='/column'>
+            <Link className='button-cancel' to={`/column/${props.processId}`}>
                 <p className='cancel-text'>뒤로 가기</p>
             </Link>
-            <Link className='button-continue' to='/result'>
+            <Link className='button-continue' to={`/result/${props.processId}`}>
                 <p className='continue-text'>계속</p>
             </Link>
         </div>

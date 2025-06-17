@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { conditionData } from '../../../public/data/columnTable'
+import React from 'react'
 import '../../styles/filteringResult/AnalysisColumn.css'
 
-const FilteringConditionColumn = () => {
-    const [conditionList, setConditionList] = useState(null);
-    useEffect(() => {
-        setConditionList(conditionData.result);
-      }, []);
+const FilteringConditionColumn = ({conditionList}) => {
 
     return (
         <div className='filtering-analysis-container'>

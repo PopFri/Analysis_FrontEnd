@@ -1,5 +1,4 @@
 import React from 'react'
-import { columnData } from '../../../public/data/columnTable'
 import '../../styles/selectFilter/columnTable.css'
 
 export default function ColumnTable(props) {
@@ -9,16 +8,16 @@ export default function ColumnTable(props) {
             <p className='title-text'>분석 컬럼</p>
         </div>
         <div className='columnTable-columnList'>
-          {columnData.result.map((column, index) => {
+          {Array.isArray(props.columnList) && props.columnList.map((column, index) => {
             return(
               <div className='columnList-column' key={index} 
-              style={props.column.id == index ? {backgroundColor: '#1ED86350'} : null}
+              style={column.columnId == props.column.id ? {backgroundColor: '#1ED86350'} : null}
               onClick={()=>{
                 if(props.column.id < 0)
-                  props.setColumn({"id": index, "value": column.name});
+                  props.setColumn({"id": column.columnId, "value": column.columnName});
               }}
               >
-                <p className='column-name'>{column.name}</p>
+                <p className='column-name'>{column.columnName}</p>
               </div>
             )
           })}

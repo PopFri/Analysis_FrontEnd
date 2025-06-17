@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { columnData } from '../../../public/data/columnTable'
+import React from 'react'
 import '../../styles/filteringResult/AnalysisColumn.css'
 
-const AnalysisColumn = () => {
-    const [seletedProcess, setSelectedProcess] = useState(false);
-    const [columnList, setColumnList] = useState(null);
-    useEffect(() => {
-        setSelectedProcess(true);
-        setColumnList(columnData.result);
-      }, []);
+const AnalysisColumn = ({columnList}) => {
 
     return (
         <div className='filtering-result-column-container'>
@@ -16,12 +9,12 @@ const AnalysisColumn = () => {
                 <div className='filtering-result-column-title'>
                     <p className='filtering-result-column-title-text'>분석 컬럼</p>
                 </div>
-                {seletedProcess && (
+                {columnList && (
                     <div className='filtering-result-column-wrapper'>
                         <div className='result-column-container'>
                             {columnList && columnList.map((column, index) => (
                                 <div className='result-column-list' key={index}>
-                                    <p className='result-column-name'>{column.name}</p>
+                                    <p className='result-column-name'>{column.columnName}</p>
                                 </div>
                             ))}
                         </div>

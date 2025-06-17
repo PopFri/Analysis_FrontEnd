@@ -24,18 +24,7 @@
             font-size: 18px;
             color: #FFFFFF;
         }
-        .result-record-modal-button {
-            color: #FFFFFF;
-            font-size: 13px;
-            font-family: 'Freesentation-6SemiBold';
-            margin-left: 210px;
-            margin-top: 3px;
-        }
     }
-}
-
-.record-group {
-    margin-bottom: 10px;
 }
 
 .result-record-table {
@@ -49,7 +38,7 @@
     margin-bottom: 10px;
 }
 
-.record-date {
+.record-title {
     font-size: 18px;
     font-family: 'Freesentation-9Black';
     color: #FFFFFF;
@@ -65,6 +54,32 @@
   
 .record-table-condition {
     width: 60%;
+    padding: 10px;
+    border-right: 1px solid #313438;
+    border-bottom: 1px solid #313438;
+    background-color: #2E2F32;
+    font-family: 'Freesentation-5Medium';
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.record-header-condition {
+    width: 60%;
+    padding: 10px;
+    border-right: 1px solid #313438;
+    border-bottom: 1px solid #313438;
+    background-color: #2E2F32;
+    font-family: 'Freesentation-5Medium';
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.record-header-count {
+    width: 30%;
     padding: 10px;
     border-right: 1px solid #313438;
     border-bottom: 1px solid #313438;
@@ -116,61 +131,4 @@
     background: none;
     display: block; 
 }
-
-.result-record-table-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  
-    .record-modal-content {
-        background-color: #1E1F22;
-        border-radius: 15px;
-        width: 500px;
-        height: 70vh;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        overflow: hidden;
-    }
-  
-    .record-modal-scroll-area {
-        flex: 1; 
-        overflow-y: auto;
-        margin-bottom: 15px;
-    }
-  
-    .record-group-modal {
-        margin-bottom: 10px;
-    }
-  
-    .record-modal-cancel-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 39px;
-        font-family: 'Freesentation-7Bold';
-        font-size: 19.5px;
-        color: #FFFFFF;
-        border: none;
-        border-radius: 11.7px;
-        background-color: #656363;
-        cursor: pointer;
-    }
-  
-    .record-modal-scroll-area::-webkit-scrollbar {
-        width: 3.9px;
-    }
-    .record-modal-scroll-area::-webkit-scrollbar-thumb {
-        background-color: #555;
-        border-radius: 10px;
-    }
-  }
 
