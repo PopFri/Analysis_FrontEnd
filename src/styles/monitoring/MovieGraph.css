@@ -63,8 +63,8 @@
                     padding: 16px;
                     margin: 8px;
                     min-width: 140px;
-
                     .movie-data-name {
+                        min-height: 35px;
                         font-family: 'Freesentation-7Bold';
                         font-size: 15px;
                         color: #A0A0A0;
