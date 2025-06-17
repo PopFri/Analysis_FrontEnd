@@ -217,13 +217,19 @@ const OutputResult = ({ columnList }) => {
                                 ))
                             ) : (
                                 <div className="record-no-data">
-                                    <div className="record-no-data-text">
-                                        데이터가 없습니다.
-                                    </div>
+                                    <div className="record-no-data-text">데이터가 없습니다.</div>
                                 </div>
                             )}
                         </div>
-                        <ResultPagination page={modalPage} setPage={setModalPage} totalPage={Math.ceil(totalDataCount / 12) - 1} />
+                        {successOrFailData && successOrFailData.length > 0 ? (
+                        <ResultPagination
+                            page={modalPage}
+                            setPage={setModalPage}
+                            totalPage={Math.max(1, Math.ceil(Number(totalDataCount || 0) / 12))}
+                        />
+                        ) : (
+                        <div className="pagination-spacer" /> 
+                        )}
                         <div className="record-modal-button-container">
                             <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => setDataType("success")}>성공 데이터</div>
                             <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => setDataType("fail")}>실패 데이터</div>

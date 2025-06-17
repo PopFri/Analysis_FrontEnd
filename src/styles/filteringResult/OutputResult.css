@@ -293,10 +293,11 @@
 
     .record-no-data {
         width: 100%;
-        height: 80%;
+        height: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center; 
-        align-items: center;    
+        align-items: center;   
         .record-no-data-text {
             display: flex;
             justify-items: center;
@@ -304,6 +305,11 @@
             font-family: 'Freesentation-7Bold';
             font-size: 19.5px;
             color: #FFFFFF;
+        }
+        .no-data-page {
+            height: 40px;
+            width: 100%;
+            margin-bottom: 40px; 
         }
     }
 
@@ -334,4 +340,9 @@
         background: none;
         display: block; 
     }
+}
+
+.pagination-spacer {
+    height: 40px; 
+    width: 100%;
 }
