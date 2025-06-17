@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-const MovieGraph = ({data}) => {
+const MovieGraph = ({data, title}) => {
     const [modal, setModal] = useState(false);
     const top10Data = data?.slice(0, 10);
     const CustomLabel = ({ x, y, width, value }) => {
@@ -66,39 +66,23 @@ const MovieGraph = ({data}) => {
             {modal && (
                 <div className='movie-graph-modal'>
                     <div className='movie-graph-modal-container'>
+                        <div className='movie-graph-title'>{title}</div>
+                        <div className='modal-graph'>
+                            <div className='movie-data-container'>
+                                {data.map((data, idx) => (
+                                    <div className='movie-data-detail' key={idx}>
+                                        <div className='movie-data-name'>
+                                            {data.name}
+                                        </div>
+                                        <div className='movie-data-data'>
+                                            {data.data}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                         <div style={{  display: 'flex', justifyContent: 'flex-start' }}>
                             <div className='modal-close-button' onClick={() => setModal(false)}>닫기</div>
-                        </div>
-                        <div className='modal-graph'>
-                            <BarChart
-                                layout="vertical"
-                                width={550}
-                                height={data.length * 60}
-                                data={data}
-                                margin={{ top: 10, right: 50, left: 10, bottom: 0 }}
-                            >
-                                <XAxis type="number" hide />
-                                <YAxis type="category" dataKey="name" hide />
-                                {data.map((entry, index) => (
-                                <text
-                                    key={`label-${index}`}
-                                    x={10}
-                                    y={index * 59.7 + 20}
-                                    fill="#fff"
-                                    fontSize={14}
-                                >
-                                    {entry.name}
-                                </text>
-                                ))}
-                                <Bar
-                                dataKey="data"
-                                fill="#3A3A3A"
-                                radius={[6, 6, 6, 6]}
-                                barSize={12}
-                                >
-                                <LabelList dataKey="data" content={<CustomLabel />} />
-                                </Bar>
-                            </BarChart>
                         </div>
                     </div>
                 </div>
