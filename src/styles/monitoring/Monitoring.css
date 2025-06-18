@@ -3,12 +3,58 @@
     height: 100vh;
     .monitoring-container {
         display: flex;
-        justify-content: center;
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: center; 
+    }
+}
+
+.monitoring-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    .monitoring-header-title {
+        font-family: "Freesentation-9Black";
+        font-size: 30px;
+        color: #1ED863;
+    }
+    .monitoring-overview {
+        display: flex;
         flex-direction: row;
+        align-items: center;
+        gap: 100px;
+        margin-right: 50px;
+        .overview-title-text {
+            font-family: "Freesentation-8ExtraBold";
+            font-size: 18px;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .overview-data-text {
+            font-family: "Freesentation-7Bold";
+            font-size: 18px;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .overview-rate-text {
+            font-family: "Freesentation-7Bold";
+            font-size: 18px;
+            color: #FF5050;
+            margin: 0;
+        }
     }
 }
 
 .activity-graph {
+    display: flex;
+    flex-direction: row;
     margin-left: 50px;
     margin-right: 10px;
 }
