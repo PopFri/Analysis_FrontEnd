@@ -1,3 +1,14 @@
+.statistics-container {
+    width: 100%;
+}
+
+.statistics-graph {
+    width: 100%;
+    .statistics-graph-container {
+        width: 100%;
+    }
+}
+
 .statistics-button-container {
     display: flex;
     justify-content: center;

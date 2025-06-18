@@ -1,15 +1,14 @@
 .datagraph-container {
+    width: 47%;
     margin: 10px;
-    margin-bottom: 30px;
 }
 
 .datagraph-list {
-    width: 550px;
+    width: 100%;
     height: 425px;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;
-    margin-right: 5px;
     overflow: auto;
     .datagraph-title {
         display: flex;

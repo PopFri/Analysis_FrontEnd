@@ -54,7 +54,7 @@ export default function MonitoringPage() {
             <Header location={"monitoring"}/>
             <div className='monitoring-container'>
                 <div className='monitoring-header'>
-                    <p className='activity-graph-title'>모니터링</p>
+                    <p className='monitoring-header-title'>모니터링</p>
                     <div className='monitoring-overview'>
                         <div className='overview-today-data'>
                             <p className='overview-title-text'>오늘 수집된 데이터</p>
@@ -79,7 +79,7 @@ export default function MonitoringPage() {
                         <p className='statistics-title'>성별 활동 통계</p>
                         <StatisticsGender />
                     </div>
-                    <div className='activity-statistics' style={{marginRight : '70px' }}>
+                    <div className='activity-statistics'>
                         <p className='statistics-title'>연령별 활동 통계</p>
                         <StatisticsAge />
                     </div>
