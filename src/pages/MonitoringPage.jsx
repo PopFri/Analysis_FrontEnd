@@ -5,6 +5,7 @@ import DataGraph from '../components/monitoring/DataGraph';
 import ProcessGraph from '../components/monitoring/ProcessGraph';
 import StatisticsGender from '../components/monitoring/StatisticsGender';
 import StatisticsAge from '../components/monitoring/StatisticsAge';
+import StatisticsTotal from '../components/monitoring/StatisticsTotal';
 
 export default function MonitoringPage() {
     const [type, setType] = useState("default");
@@ -73,7 +74,7 @@ export default function MonitoringPage() {
                 <div className='statistics-row'>
                     <div className='activity-statistics'>
                         <p className='statistics-title'>전체 활동 통계</p>
-                        <StatisticsGender />
+                        <StatisticsTotal />
                     </div>
                     <div className='activity-statistics'>
                         <p className='statistics-title'>성별 활동 통계</p>

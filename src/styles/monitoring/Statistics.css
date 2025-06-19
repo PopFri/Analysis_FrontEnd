@@ -71,6 +71,10 @@
     color: #FFFFFF;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    .live-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .selected-option {

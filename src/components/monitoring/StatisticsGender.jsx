@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/monitoring/Statistics.css'
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  LabelList,
-  ResponsiveContainer,
-} from 'recharts';
 import MovieGraph from './MovieGraph';
 
 const StatisticsGender = () => {
@@ -16,22 +7,6 @@ const StatisticsGender = () => {
     const [selectedGender, setSelectedGender] = useState('male');
     const [selectedOption, setSelecteOption] = useState('남성');
     const [selectedDay, setSelectedDay] = useState('day');
-    const CustomLabel = ({ x, y, width, value }) => {
-        const padding = 6;
-        const labelX = x + width + padding;
-
-        return (
-            <text
-            x={labelX}
-            y={y + 10}
-            fill="#ffffff"
-            fontSize={14}
-            textAnchor="start"
-            >
-            {value}분
-            </text>
-        );
-    };
     useEffect(() => {
         fetch('/data/movieData.json')
             .then((res) => res.json())
@@ -68,7 +43,8 @@ const StatisticsGender = () => {
                         className={`toggle-button ${selectedDay === 'day' ? 'active' : ''}`}
                         onClick={() => setSelectedDay('day')}
                     >
-                        일간
+                        실시간
+                        <img className='live-icon' src='/images/live-icon.png'/>
                     </div>
                     <div
                         className={`toggle-button ${selectedDay === 'week' ? 'active' : ''}`}
@@ -87,9 +63,9 @@ const StatisticsGender = () => {
             <div className='statistics-graph'>
                 <div className='statistics-graph-container'>
                     <div className='graph-title'>선호 영화</div>
-                    <MovieGraph data={data} title={'선호 영화'}/>
+                    <MovieGraph data={data} title={'선호 영화'} selectedDay={selectedDay}/>
                     <div className='graph-title'>추천 횟수</div>
-                    <MovieGraph data={data} title={'추천 횟수'}/>
+                    <MovieGraph data={data} title={'추천 횟수'} selectedDay={selectedDay}/>
                 </div>
             </div>
         </div>
