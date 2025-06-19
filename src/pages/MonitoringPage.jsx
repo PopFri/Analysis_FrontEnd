@@ -61,7 +61,7 @@ export default function MonitoringPage() {
                             <p className='overview-data-text'>123,123</p>
                         </div>
                         <div className='overview-rate'>
-                            <p className='overview-title-text'>오늘 수집된 데이터</p>
+                            <p className='overview-title-text'>전일 대비 증감율</p>
                             <p className='overview-rate-text'>-2%</p>
                         </div>
                     </div>
