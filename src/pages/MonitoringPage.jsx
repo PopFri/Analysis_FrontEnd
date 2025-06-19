@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 import '../styles/monitoring/Monitoring.css'
 import Header from '../components/Header'
 import DataGraph from '../components/monitoring/DataGraph';

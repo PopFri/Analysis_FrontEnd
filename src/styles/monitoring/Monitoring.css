@@ -52,7 +52,7 @@
 
 .activity-graph {
     display: flex;
-    flex-direction: space-between;
+    width: 100%;
     justify-content: center; 
     align-items: center;
     gap: 10px;     

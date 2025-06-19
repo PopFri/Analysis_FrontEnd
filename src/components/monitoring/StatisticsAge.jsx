@@ -31,7 +31,6 @@ const StatisticsAge = () => {
             const data = await res.json();
             setRecommendData(data.result);
             if (!res.ok || !data.isSuccess) {
-                console.error("데이터 로드 실패:", data.message);
                 alert(data.message); 
                 return;
             }
@@ -47,23 +46,19 @@ const StatisticsAge = () => {
 
             visitAnalysisSource.addEventListener(`visit-analysis-${selectedAge}`, (e) => {
                 const data = JSON.parse(e.data);
-                console.log("📊 visit-analysis 이벤트 수신:", data);
                 setVisitData(data);
             });
 
             recommendAnalysisSource.addEventListener(`recommend-analysis-${selectedAge}`, (e) => {
                 const data = JSON.parse(e.data);
-                console.log("📊 recommend-analysis 이벤트 수신:", data);
                 setRecommendData(data);
             });
 
-            visitAnalysisSource.onerror = (err) => {
-                console.error("❌ SSE visit-analysis 오류:", err);
+            visitAnalysisSource.onerror = () => {
                 visitAnalysisSource.close();
             };
 
-            recommendAnalysisSource.onerror = (err) => {
-                console.error("❌ SSE recommend-analysis 오류:", err);
+            recommendAnalysisSource.onerror = () => {
                 recommendAnalysisSource.close();
             }
 
