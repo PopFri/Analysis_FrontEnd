@@ -15,7 +15,7 @@ const StatisticsGender = () => {
                 method: 'GET',
             });
             const data = await res.json();
-            setVisitData(data);
+            setVisitData(data.result);
             if (!res.ok || !data.isSuccess) {
                 alert(data.message); 
                 return;
@@ -30,7 +30,7 @@ const StatisticsGender = () => {
                 method: 'GET',
             });
             const data = await res.json();
-            setRecommendData(data);
+            setRecommendData(data.result);
             if (!res.ok || !data.isSuccess) {
                 console.error("데이터 로드 실패:", data.message);
                 alert(data.message); 
