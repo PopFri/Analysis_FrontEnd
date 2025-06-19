@@ -40,11 +40,10 @@ const StatisticsGender = () => {
             <div className="date-range-toggle">
                 <div className='toggle-button-container'>
                     <div
-                        className={`toggle-button ${selectedDay === 'day' ? 'active' : ''}`}
+                        className={`toggle-button ${selectedDay === 'day' ? 'live' : ''}`}
                         onClick={() => setSelectedDay('day')}
                     >
                         실시간
-                        <img className='live-icon' src='/images/live-icon.png'/>
                     </div>
                     <div
                         className={`toggle-button ${selectedDay === 'week' ? 'active' : ''}`}

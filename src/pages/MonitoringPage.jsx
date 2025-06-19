@@ -24,23 +24,23 @@ export default function MonitoringPage() {
         const recommendAnalysisSource = new EventSource(`http://localhost:8081/sse/recommend-analysis?type=${type}`);
 
         visitAnalysisSource.addEventListener(`visit-analysis-${type}`, (e) => {
-        const data = JSON.parse(e.data);
-        console.log("📊 visit-analysis 이벤트 수신:", data);
+            const data = JSON.parse(e.data);
+            console.log("📊 visit-analysis 이벤트 수신:", data);
         });
 
         recommendAnalysisSource.addEventListener(`recommend-analysis-${type}`, (e) => {
-        const data = JSON.parse(e.data);
-        console.log("📊 recommend-analysis 이벤트 수신:", data);
+            const data = JSON.parse(e.data);
+            console.log("📊 recommend-analysis 이벤트 수신:", data);
         });
 
         visitAnalysisSource.onerror = (err) => {
-        console.error("❌ SSE visit-analysis 오류:", err);
-        visitAnalysisSource.close();
+            console.error("❌ SSE visit-analysis 오류:", err);
+            visitAnalysisSource.close();
         };
 
         recommendAnalysisSource.onerror = (err) => {
-        console.error("❌ SSE recommend-analysis 오류:", err);
-        recommendAnalysisSource.close();
+            console.error("❌ SSE recommend-analysis 오류:", err);
+            recommendAnalysisSource.close();
         }
 
         return () => {

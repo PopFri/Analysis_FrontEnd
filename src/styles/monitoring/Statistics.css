@@ -18,7 +18,7 @@
 .statistics-button-wrapper {
     display: flex;
     width: 100%;
-    height: 16px;
+    height: 18px;
     gap: 12px;
     margin-bottom: 10px;
 }
@@ -53,7 +53,7 @@
 .toggle-button-container {
     display: flex;             
     width: 100%;
-    height: 16px;
+    height: 18px;
     gap: 12px;                  
 }
 
@@ -71,10 +71,6 @@
     color: #FFFFFF;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    .live-icon {
-        width: 20px;
-        height: 20px;
-    }
 }
 
 .selected-option {
@@ -95,6 +91,11 @@
 .toggle-button.active {
     background-color: #1ED863;
     color: #000000;
+}
+
+.toggle-button.live {
+    background-color: #1ED863;
+    color: #FF3535;
 }
 
 .graph-title {

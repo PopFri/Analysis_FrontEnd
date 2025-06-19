@@ -82,8 +82,8 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
                         <div className='movie-graph-title-container'>
                             <div className='movie-graph-title'>{title}</div>
                             <div className='movie-graph-criterion'>
-                                <div className='movie-graph-day' style={{color: '#FFFFFF'}}>{criterion}</div>
                                 <div className='movie-graph-day' style={{color: dayColor}}>{day}</div>
+                                <div className='movie-graph-day' style={{color: '#FFFFFF'}}>{criterion}</div>
                             </div>
                         </div>
                         <div className='modal-graph'>
