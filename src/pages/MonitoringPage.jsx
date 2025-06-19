@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/monitoring/Monitoring.css'
 import Header from '../components/Header'
 import DataGraph from '../components/monitoring/DataGraph';
@@ -8,8 +8,30 @@ import StatisticsAge from '../components/monitoring/StatisticsAge';
 import StatisticsTotal from '../components/monitoring/StatisticsTotal';
 
 export default function MonitoringPage() {
-    const Service_Server_IP = import.meta.env.VITE_SERVICE_SERVER_IP;
-    
+    const Server_IP = import.meta.env.VITE_SERVER_IP;
+    const [data, setData] = useState([]);
+    const getSignString = (value) => {
+        if (value >= 0) return '#1ED863';
+        else return '#FF5050';
+    };
+
+    useEffect(() => {
+        const processAnalysisSource = new EventSource(`${Server_IP}/daily-activity`);
+
+        processAnalysisSource.addEventListener(`dailyActivity`, (e) => {
+            const data = JSON.parse(e.data);
+            console.log(data);
+            setData(data);
+        });
+
+        processAnalysisSource.onerror = () => {
+            processAnalysisSource.close();
+        };
+
+        return () => {
+            processAnalysisSource.close();
+        };
+    }, []);
     return (
         <div className='monitoring'>
             <div className='backgroud' />
@@ -20,11 +42,13 @@ export default function MonitoringPage() {
                     <div className='monitoring-overview'>
                         <div className='overview-today-data'>
                             <p className='overview-title-text'>오늘 수집된 데이터</p>
-                            <p className='overview-data-text'>123,123</p>
+                            <p className='overview-data-text'>{data.cnt}</p>
                         </div>
                         <div className='overview-rate'>
                             <p className='overview-title-text'>전일 대비 증감율</p>
-                            <p className='overview-rate-text'>-2%</p>
+                            <p className='overview-data-text' style={{color: getSignString(data.changeRate)}}>
+                                {Number(data.changeRate?.toFixed(1) ?? 0)}%
+                            </p>
                         </div>
                     </div>
                 </div>
