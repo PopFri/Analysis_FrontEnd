@@ -11,6 +11,7 @@
 }
 .filtering-result-column{
     width: 20%;
+    margin-right: 20px;
     .filtering-result-title {
         font-family: "Freesentation-9Black";
         font-size: 25px;
