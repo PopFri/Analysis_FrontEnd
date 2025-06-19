@@ -51,7 +51,7 @@ const DataGraph = () => {
                         <XAxis dataKey="time" tick={{ fill: '#FFFFFF', fontSize: 12 }}/>
                         <YAxis tick={{ fill: '#FFFFFF', fontSize: 12 }}/>
                         <Tooltip />
-                        <Line type="monotone" dataKey="value" stroke="#1ED863" activeDot={{ r: 3 }} />
+                        <Line type="monotone" dataKey="value" stroke="#1ED863" activeDot={{ r: 3 }} isAnimationActive={false} />
                     </LineChart>
                 </ResponsiveContainer>
             </div>

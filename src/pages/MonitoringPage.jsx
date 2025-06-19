@@ -10,7 +10,7 @@ import StatisticsTotal from '../components/monitoring/StatisticsTotal';
 export default function MonitoringPage() {
     const Server_IP = import.meta.env.VITE_SERVER_IP;
     const [data, setData] = useState([]);
-    const getSignString = (value) => {
+    const setChangeRateColor = (value) => {
         if (value >= 0) return '#1ED863';
         else return '#FF5050';
     };
@@ -46,7 +46,7 @@ export default function MonitoringPage() {
                         </div>
                         <div className='overview-rate'>
                             <p className='overview-title-text'>전일 대비 증감율</p>
-                            <p className='overview-data-text' style={{color: getSignString(data.changeRate)}}>
+                            <p className='overview-data-text' style={{color: setChangeRateColor(data.changeRate)}}>
                                 {Number(data.changeRate?.toFixed(1) ?? 0)}%
                             </p>
                         </div>
