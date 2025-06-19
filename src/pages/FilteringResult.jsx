@@ -87,7 +87,7 @@ export default function FilteringResult() {
                     <FilteringConditionColumn conditionList={conditionList}/>
                 </div>
                 <OutputResult columnList={columnList}/>
-                <div className='filtering-result-record-container'>
+                <div className='filtering-result-info-container'>
                     <FilteringResultGraph resultData={resultData} totalCount={totalCount}/>
                     <FilteringResultRecord resultData={resultData}/>
                     <button className='go-to-home-button' onClick={() => navigate('/home')}>

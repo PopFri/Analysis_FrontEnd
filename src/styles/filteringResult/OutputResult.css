@@ -1,10 +1,11 @@
 .output-result-container {
+    width: 45%;
     margin: 10px;
 }
 
 .result-list {
     height: 624px;
-    width: 596px;
+    width: 100%;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;
