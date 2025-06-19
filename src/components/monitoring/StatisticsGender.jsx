@@ -63,9 +63,9 @@ const StatisticsGender = () => {
             <div className='statistics-graph'>
                 <div className='statistics-graph-container'>
                     <div className='graph-title'>선호 영화</div>
-                    <MovieGraph data={data} title={'선호 영화'} selectedDay={selectedDay}/>
+                    <MovieGraph data={data} criterion={'성별'} title={'선호 영화'} selectedDay={selectedDay}/>
                     <div className='graph-title'>추천 횟수</div>
-                    <MovieGraph data={data} title={'추천 횟수'} selectedDay={selectedDay}/>
+                    <MovieGraph data={data} criterion={'성별'} title={'추천 횟수'} selectedDay={selectedDay}/>
                 </div>
             </div>
         </div>

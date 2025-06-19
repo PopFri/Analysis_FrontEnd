@@ -51,6 +51,12 @@
                 margin-top: 15px;
                 margin-left: 20px;
             }
+            .movie-graph-criterion {
+                display: flex;
+                align-items: center;
+                justify-content: row;
+                margin-right: 10px;
+            }
             .movie-graph-day {
                 font-size: 17px;
                 font-family: 'Freesentation-7Bold';

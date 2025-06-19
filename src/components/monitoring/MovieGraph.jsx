@@ -9,7 +9,7 @@ import {
 ResponsiveContainer
 } from 'recharts';
 
-const MovieGraph = ({data, title, selectedDay}) => {
+const MovieGraph = ({data, title, selectedDay, criterion}) => {
     const [modal, setModal] = useState(false);
     const [day, setDay] = useState('실시간');
     const top10Data = data?.slice(0, 10);
@@ -41,7 +41,7 @@ const MovieGraph = ({data, title, selectedDay}) => {
             setDay('월간');
         }
     }, [selectedDay]);
-    
+
     return (
         <div className='movie-graph-container'>
             <ResponsiveContainer width="100%" height={top10Data.length * 56}>
@@ -81,7 +81,10 @@ const MovieGraph = ({data, title, selectedDay}) => {
                     <div className='movie-graph-modal-container'>
                         <div className='movie-graph-title-container'>
                             <div className='movie-graph-title'>{title}</div>
-                            <div className='movie-graph-day' style={{color: dayColor}}>{day}</div>
+                            <div className='movie-graph-criterion'>
+                                <div className='movie-graph-day' style={{color: '#FFFFFF'}}>{criterion}</div>
+                                <div className='movie-graph-day' style={{color: dayColor}}>{day}</div>
+                            </div>
                         </div>
                         <div className='modal-graph'>
                             <div className='movie-data-container'>
