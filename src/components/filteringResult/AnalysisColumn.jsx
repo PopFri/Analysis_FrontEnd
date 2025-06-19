@@ -4,17 +4,17 @@ import '../../styles/filteringResult/AnalysisColumn.css'
 const AnalysisColumn = ({columnList}) => {
 
     return (
-        <div className='filtering-analysis-container'>
-            <div className='filtering-analysis-list'>
-                <div className='filtering-analysis-title'>
-                    <p className='filtering-analysis-title-text'>분석 컬럼</p>
+        <div className='filtering-analysis-column-container'>
+            <div className='filtering-analysis-column-list'>
+                <div className='filtering-analysis-column-title'>
+                    <p className='filtering-analysis-column-title-text'>분석 컬럼</p>
                 </div>
                 {columnList && (
-                    <div className='filtering-analysis-wrapper'>
-                        <div className='analysis-container'>
+                    <div className='filtering-analysis-column-wrapper'>
+                        <div className='analysis-column-container'>
                             {columnList && columnList.map((column, index) => (
-                                <div className='analysis-list' key={index}>
-                                    <p className='analysis-name'>{column.columnName}</p>
+                                <div className='analysis-column-list' key={index}>
+                                    <p className='analysis-column-name'>{column.columnName}</p>
                                 </div>
                             ))}
                         </div>
