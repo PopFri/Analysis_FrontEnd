@@ -3,17 +3,79 @@ import MovieGraph from './MovieGraph';
 import '../../styles/monitoring/Statistics.css'
 
 const StatisticsAge = () => {
-    const [data, setData] = useState([]);
+    const [visitData, setVisitData] = useState([]);
+    const [recommendData, setRecommendData] = useState([]);
+    const Service_Server_IP = import.meta.env.VITE_SERVICE_SERVER_IP;
     const [selectedAge, setSelectedAge] = useState('10');
     const [selectedDay, setSelectedDay] = useState('day');
+    const loadMovieData = async () => {
+        try {
+            const res = await fetch(`${Service_Server_IP}/sse/analysis/visit?date=${selectedDay}&type=${selectedAge}`, {
+                method: 'GET',
+            });
+            const data = await res.json();
+            setVisitData(data);
+            if (!res.ok || !data.isSuccess) {
+                alert(data.message); 
+                return;
+            }
+
+        } catch {
+            alert("데이터 로드 중 오류가 발생했습니다.");
+        }
+
+        try {
+            const res = await fetch(`${Service_Server_IP}/sse/analysis/recommend?date=${selectedDay}&type=${selectedAge}`, {
+                method: 'GET',
+            });
+            const data = await res.json();
+            setRecommendData(data);
+            if (!res.ok || !data.isSuccess) {
+                console.error("데이터 로드 실패:", data.message);
+                alert(data.message); 
+                return;
+            }
+
+        } catch {
+            alert("데이터 로드 중 오류가 발생했습니다.");
+        }
+    };
     useEffect(() => {
-        fetch('/data/movieData.json')
-            .then((res) => res.json())
-            .then((json) => {
-                setData(json.result.data); // ✅ 데이터 배열 추출
-            })
-            .catch((err) => console.error('데이터 로딩 실패:', err));
-    }, []);
+        if (selectedDay === 'day') {
+            const visitAnalysisSource = new EventSource(`${Service_Server_IP}/sse/visit-analysis?type=${selectedAge}`);
+            const recommendAnalysisSource = new EventSource(`${Service_Server_IP}/sse/recommend-analysis?type=${selectedAge}`);
+
+            visitAnalysisSource.addEventListener(`visit-analysis-${selectedAge}`, (e) => {
+                const data = JSON.parse(e.data);
+                console.log("📊 visit-analysis 이벤트 수신:", data);
+                setVisitData(data);
+            });
+
+            recommendAnalysisSource.addEventListener(`recommend-analysis-${selectedAge}`, (e) => {
+                const data = JSON.parse(e.data);
+                console.log("📊 recommend-analysis 이벤트 수신:", data);
+                setRecommendData(data);
+            });
+
+            visitAnalysisSource.onerror = (err) => {
+                console.error("❌ SSE visit-analysis 오류:", err);
+                visitAnalysisSource.close();
+            };
+
+            recommendAnalysisSource.onerror = (err) => {
+                console.error("❌ SSE recommend-analysis 오류:", err);
+                recommendAnalysisSource.close();
+            }
+
+            return () => {
+                visitAnalysisSource.close();
+                recommendAnalysisSource.close();
+            };
+        } else {
+            loadMovieData();
+        }
+        
+    }, [selectedAge, selectedDay]);
     return (
         <div className='statistics-container'>
             <div className='statistics-button-container'>
@@ -73,9 +135,9 @@ const StatisticsAge = () => {
             <div className='statistics-graph'>
                 <div className='statistics-graph-container'>
                     <div className='graph-title'>선호 영화</div>
-                    <MovieGraph data={data} criterion={'연령별'} title={'선호 영화'} selectedDay={selectedDay}/>
+                    <MovieGraph data={visitData} criterion={'연령별'} title={'선호 영화'} selectedDay={selectedDay}/>
                     <div className='graph-title'>추천 횟수</div>
-                    <MovieGraph data={data} criterion={'연령별'} title={'추천 횟수'} selectedDay={selectedDay}/>
+                    <MovieGraph data={recommendData} criterion={'연령별'} title={'추천 횟수'} selectedDay={selectedDay}/>
                 </div>
             </div>
         </div>

@@ -8,46 +8,7 @@ import StatisticsAge from '../components/monitoring/StatisticsAge';
 import StatisticsTotal from '../components/monitoring/StatisticsTotal';
 
 export default function MonitoringPage() {
-    const [type, setType] = useState("default");
-    const Server_IP = import.meta.env.VITE_SERVER_IP;
-
-    const sse = new EventSource("http://localhost:8081/sse/connect");
-
-    sse.addEventListener('connect', (e) => {
-        const { data: receivedConnectData } = e;
-        console.log('connect event data: ',receivedConnectData);  // "connected!"
-        console.log(e);
-    });
-
-    useEffect(() => {
-        const visitAnalysisSource = new EventSource(`http://localhost:8081/sse/visit-analysis?type=${type}`);
-        const recommendAnalysisSource = new EventSource(`http://localhost:8081/sse/recommend-analysis?type=${type}`);
-
-        visitAnalysisSource.addEventListener(`visit-analysis-${type}`, (e) => {
-            const data = JSON.parse(e.data);
-            console.log("📊 visit-analysis 이벤트 수신:", data);
-        });
-
-        recommendAnalysisSource.addEventListener(`recommend-analysis-${type}`, (e) => {
-            const data = JSON.parse(e.data);
-            console.log("📊 recommend-analysis 이벤트 수신:", data);
-        });
-
-        visitAnalysisSource.onerror = (err) => {
-            console.error("❌ SSE visit-analysis 오류:", err);
-            visitAnalysisSource.close();
-        };
-
-        recommendAnalysisSource.onerror = (err) => {
-            console.error("❌ SSE recommend-analysis 오류:", err);
-            recommendAnalysisSource.close();
-        }
-
-        return () => {
-            visitAnalysisSource.close();
-            recommendAnalysisSource.close();
-        };
-    }, []);
+    const Service_Server_IP = import.meta.env.VITE_SERVICE_SERVER_IP;
     
     return (
         <div className='monitoring'>

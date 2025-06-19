@@ -17,17 +17,19 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
     
     const CustomLabel = ({ x, y, width, value }) => {
         const padding = 6;
-        const labelX = x + width + padding;
+        const safeX = typeof x === 'number' ? x : 0;
+        const safeWidth = typeof width === 'number' ? width : 0;
+        const labelX = safeX + safeWidth + padding;
 
         return (
             <text
-            x={labelX}
-            y={y + 10}
-            fill="#ffffff"
-            fontSize={14}
-            textAnchor="start"
+                x={labelX}
+                y={(typeof y === 'number' ? y : 0) + 10}
+                fill="#ffffff"
+                fontSize={14}
+                textAnchor="start"
             >
-            {value}번
+                {value}회
             </text>
         );
     };
@@ -60,16 +62,16 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
                         fill="#fff"
                         fontSize={14}
                     >
-                        {entry.name}
+                        {entry.movieName}
                     </text>
                     ))}
                     <Bar
-                    dataKey="data"
+                    dataKey="count"
                     fill="#3A3A3A"
                     radius={[6, 6, 6, 6]}
                     barSize={12}
                     >
-                    <LabelList dataKey="data" content={<CustomLabel />} />
+                    <LabelList dataKey="count" content={<CustomLabel />} />
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>
