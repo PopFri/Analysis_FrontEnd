@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import '../../styles/monitoring/Statistics.css'
 import MovieGraph from './MovieGraph';
 
-const StatisticsGender = () => {
+const StatisticsTotal = () => {
     const [data, setData] = useState([]);
-    const [selectedGender, setSelectedGender] = useState('male');
-    const [selectedOption, setSelecteOption] = useState('남성');
     const [selectedDay, setSelectedDay] = useState('day');
     useEffect(() => {
         fetch('/data/movieData.json')
@@ -20,21 +18,15 @@ const StatisticsGender = () => {
             <div className='statistics-button-container'>
                 <div className='statistics-button-wrapper'>
                     <div
-                        className={`statistics-button ${selectedGender === 'male' ? 'active' : ''}`}
-                        onClick={() => {setSelectedGender('male'); setSelecteOption('남성')}}
+                        className='statistics-button active'
+                        style={{ width: '100%' }}
                     >
-                        남성
-                    </div>
-                    <div
-                        className={`statistics-button ${selectedGender === 'female' ? 'active' : ''}`}
-                        onClick={() => {setSelectedGender('female'); setSelecteOption('여성')}}
-                    >
-                        여성
+                        전체 데이터
                     </div>
                 </div>
             </div>
             <div className='selected-option'>
-                {selectedOption}
+                전체
                 <div className='selected-option-text'> 활동 통계</div>
             </div>
             <div className="date-range-toggle">
@@ -62,13 +54,13 @@ const StatisticsGender = () => {
             <div className='statistics-graph'>
                 <div className='statistics-graph-container'>
                     <div className='graph-title'>선호 영화</div>
-                    <MovieGraph data={data} criterion={'성별'} title={'선호 영화'} selectedDay={selectedDay}/>
+                    <MovieGraph data={data} title={'선호 영화'} criterion={'전체'} selectedDay={selectedDay}/>
                     <div className='graph-title'>추천 횟수</div>
-                    <MovieGraph data={data} criterion={'성별'} title={'추천 횟수'} selectedDay={selectedDay}/>
+                    <MovieGraph data={data} title={'추천 횟수'} criterion={'전체'} selectedDay={selectedDay}/>
                 </div>
             </div>
         </div>
     )
 }
 
-export default StatisticsGender;
+export default StatisticsTotal;

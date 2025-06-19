@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../styles/filteringResult/FilteringResultGraph.css'
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const FilteringResultGraph = ({resultData, totalCount}) => {
     const CustomizedAxisTick = ({ x, y, payload }) => {
@@ -38,7 +38,7 @@ const FilteringResultGraph = ({resultData, totalCount}) => {
                     (전체 데이터 수: {totalCount})
                 </div>
                 <div className='result-graph'>
-                    <div style={{ width: chartWidth }}>
+                    <div style={{ width: '100%'}}>
                         <BarChart
                             width={chartWidth}
                             height={260}

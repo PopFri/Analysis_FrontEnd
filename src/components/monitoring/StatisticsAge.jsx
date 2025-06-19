@@ -51,10 +51,10 @@ const StatisticsAge = () => {
             <div className="date-range-toggle">
                 <div className='toggle-button-container'>
                     <div
-                        className={`toggle-button ${selectedDay === 'day' ? 'active' : ''}`}
+                        className={`toggle-button ${selectedDay === 'day' ? 'live' : ''}`}
                         onClick={() => setSelectedDay('day')}
                     >
-                        일간
+                        실시간
                     </div>
                     <div
                         className={`toggle-button ${selectedDay === 'week' ? 'active' : ''}`}
@@ -73,9 +73,9 @@ const StatisticsAge = () => {
             <div className='statistics-graph'>
                 <div className='statistics-graph-container'>
                     <div className='graph-title'>선호 영화</div>
-                    <MovieGraph data={data} title={'선호 영화'}/>
+                    <MovieGraph data={data} criterion={'연령별'} title={'선호 영화'} selectedDay={selectedDay}/>
                     <div className='graph-title'>추천 횟수</div>
-                    <MovieGraph data={data} title={'추천 횟수'}/>
+                    <MovieGraph data={data} criterion={'연령별'} title={'추천 횟수'} selectedDay={selectedDay}/>
                 </div>
             </div>
         </div>

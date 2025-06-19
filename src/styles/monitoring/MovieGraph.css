@@ -13,7 +13,7 @@
 }
 
 .movie-graph-container {
-    width: 550px;
+    width: 100%;
     height: 600px;
     background-color: #1C1E1C;
     border-radius: 10px;
@@ -38,17 +38,36 @@
         height: 810px;
         background-color: #1C1E1C;
         border-radius: 10px;
-        .movie-graph-title {
-            font-size: 20px;
-            font-family: 'Freesentation-7Bold';
-            color: #1ED863;
-            margin-top: 15px;
-            margin-left: 20px;
+        .movie-graph-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 47px;
+            .movie-graph-title {
+                font-size: 20px;
+                font-family: 'Freesentation-7Bold';
+                color: #1ED863;
+                margin-top: 15px;
+                margin-left: 20px;
+            }
+            .movie-graph-criterion {
+                display: flex;
+                align-items: center;
+                justify-content: row;
+                margin-right: 10px;
+            }
+            .movie-graph-day {
+                font-size: 17px;
+                font-family: 'Freesentation-7Bold';
+                margin-top: 15px;
+                margin-right: 20px;
+            }
         }
         .modal-graph {
             margin-top: 10px;
             width: 100%;
-            height: 712.4px;
+            height: 705px;
             overflow: auto;
             .movie-data-container {
                 display: grid;

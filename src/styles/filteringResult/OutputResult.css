@@ -1,14 +1,14 @@
 .output-result-container {
+    width: 45%;
     margin: 10px;
 }
 
 .result-list {
     height: 624px;
-    width: 596px;
+    width: 100%;
     border: 2px solid #1ED863;
     border-radius: 20px;
     border-top: none;
-    margin-right: 5px;
     background-color: #1E1F2280;
     .result-title {
         display: flex;
@@ -30,7 +30,8 @@
     color: #FFFFFF;
     font-size: 13px;
     font-family: 'Freesentation-6SemiBold';
-    margin-left: 450px;
+    margin-left: auto;
+    margin-right: 20px;
     margin-top: 3px;
 }
 
