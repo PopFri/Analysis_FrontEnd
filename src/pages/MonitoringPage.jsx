@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/monitoring/Monitoring.css'
 import Header from '../components/Header'
 import DataGraph from '../components/monitoring/DataGraph';
@@ -8,47 +8,34 @@ import StatisticsAge from '../components/monitoring/StatisticsAge';
 import StatisticsTotal from '../components/monitoring/StatisticsTotal';
 
 export default function MonitoringPage() {
-    const [type, setType] = useState("default");
     const Server_IP = import.meta.env.VITE_SERVER_IP;
+    const [data, setData] = useState([]);
+    const setChangeRateColor = (value) => {
+        if (value >= 0) return '#1ED863';
+        else return '#FF5050';
+    };
 
-    const sse = new EventSource("http://localhost:8081/sse/connect");
-
-    sse.addEventListener('connect', (e) => {
-        const { data: receivedConnectData } = e;
-        console.log('connect event data: ',receivedConnectData);  // "connected!"
-        console.log(e);
-    });
+    const formatWithComma = (num) => {
+        if (typeof num !== 'number') return '0';
+        return num.toLocaleString();
+    };
 
     useEffect(() => {
-        const visitAnalysisSource = new EventSource(`http://localhost:8081/sse/visit-analysis?type=${type}`);
-        const recommendAnalysisSource = new EventSource(`http://localhost:8081/sse/recommend-analysis?type=${type}`);
+        const processAnalysisSource = new EventSource(`${Server_IP}/daily-activity`);
 
-        visitAnalysisSource.addEventListener(`visit-analysis-${type}`, (e) => {
+        processAnalysisSource.addEventListener(`dailyActivity`, (e) => {
             const data = JSON.parse(e.data);
-            console.log("📊 visit-analysis 이벤트 수신:", data);
+            setData(data);
         });
 
-        recommendAnalysisSource.addEventListener(`recommend-analysis-${type}`, (e) => {
-            const data = JSON.parse(e.data);
-            console.log("📊 recommend-analysis 이벤트 수신:", data);
-        });
-
-        visitAnalysisSource.onerror = (err) => {
-            console.error("❌ SSE visit-analysis 오류:", err);
-            visitAnalysisSource.close();
+        processAnalysisSource.onerror = () => {
+            processAnalysisSource.close();
         };
-
-        recommendAnalysisSource.onerror = (err) => {
-            console.error("❌ SSE recommend-analysis 오류:", err);
-            recommendAnalysisSource.close();
-        }
 
         return () => {
-            visitAnalysisSource.close();
-            recommendAnalysisSource.close();
+            processAnalysisSource.close();
         };
     }, []);
-    
     return (
         <div className='monitoring'>
             <div className='backgroud' />
@@ -59,11 +46,13 @@ export default function MonitoringPage() {
                     <div className='monitoring-overview'>
                         <div className='overview-today-data'>
                             <p className='overview-title-text'>오늘 수집된 데이터</p>
-                            <p className='overview-data-text'>123,123</p>
+                            <p className='overview-data-text'>{formatWithComma(data.cnt)}</p>
                         </div>
                         <div className='overview-rate'>
                             <p className='overview-title-text'>전일 대비 증감율</p>
-                            <p className='overview-rate-text'>-2%</p>
+                            <p className='overview-data-text' style={{color: setChangeRateColor(data.changeRate)}}>
+                                {Number(data.changeRate?.toFixed(1) ?? 0)}%
+                            </p>
                         </div>
                     </div>
                 </div>

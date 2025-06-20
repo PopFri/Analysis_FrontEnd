@@ -1,17 +1,3 @@
-.graph-detail-modal-button {
-    position: absolute;
-    bottom: 5px;
-    left: 1px;
-    width: 94.5%;
-    padding: 10px 15px;
-    border-top: 1px solid #656363;
-    color: #1ED863;
-    font-size: 15px;
-    font-family: 'Freesentation-6SemiBold';
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-}
-
 .movie-graph-container {
     width: 100%;
     height: 600px;
@@ -19,6 +5,21 @@
     border-radius: 10px;
     position: relative;
     margin-bottom: 40px;
+}
+
+.graph-detail-modal-button {
+    position: absolute;
+    bottom: 5px;
+    left: 1px;
+    width: 97.7%;
+    padding: 10px;
+    padding-right: 0;
+    border-top: 1px solid #656363;
+    color: #1ED863;
+    font-size: 15px;
+    font-family: 'Freesentation-6SemiBold';
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .movie-graph-modal {
@@ -143,3 +144,12 @@
     display: block; 
 }
 
+.movie-no-data {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-family: 'Freesentation-7Bold';
+    color: #A0A0A0;
+}

@@ -4,14 +4,23 @@ import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend 
 
 const ProcessGraph = () => {
     const [data, setData] = useState([]);
+    const Server_IP = import.meta.env.VITE_SERVER_IP;
 
     useEffect(() => {
-        fetch('/data/filteringDataTable.json')
-            .then((res) => res.json())
-            .then((json) => {
-                setData(json.result.processes); // ✅ 데이터 배열 추출
-            })
-            .catch((err) => console.error('데이터 로딩 실패:', err));
+        const processAnalysisSource = new EventSource(`${Server_IP}/process-graph`);
+
+        processAnalysisSource.addEventListener(`processGraph`, (e) => {
+            const data = JSON.parse(e.data);
+            setData(data);
+        });
+
+        processAnalysisSource.onerror = () => {
+            processAnalysisSource.close();
+        };
+
+        return () => {
+            processAnalysisSource.close();
+        };
     }, []);
 
     const CustomizedAxisTick = ({ x, y, payload }) => {
@@ -35,13 +44,9 @@ const ProcessGraph = () => {
           </g>
         );
     };
-
-    useEffect(() => {
-        console.log(data);
-    }, []);
     
     const barSize = 40;
-    const barGap = 10;
+    const barGap = 20;
     const chartWidth = data.length * (barSize + barGap) + 90;
 
 
@@ -52,7 +57,7 @@ const ProcessGraph = () => {
                     <p className='process-graph-title-text'>프로세스 별 성공 수</p>
                 </div>
                 <div className='process-graph'>
-                    <div style={{ width: chartWidth }}>
+                    <div style={{ width: '100%' }}>
                         <BarChart
                             width={chartWidth}
                             height={350}
@@ -61,14 +66,20 @@ const ProcessGraph = () => {
                             barCategoryGap={barGap}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="process" tick={<CustomizedAxisTick />} interval={0} />
+                            <XAxis dataKey="processName" tick={<CustomizedAxisTick />} interval={0} />
                             <YAxis tick={{ fill: '#1ED863', fontSize: 12 }} />
                             <Tooltip />
                             <Bar
-                                dataKey="data"
+                                dataKey="successCnt"
                                 fill="#1ED863"
                                 barSize={barSize}
                                 activeBar={<Rectangle fill="white" stroke="green" />}
+                            />
+                            <Bar
+                                dataKey="failCnt"
+                                fill="#FF3535"
+                                barSize={barSize}
+                                activeBar={<Rectangle fill="white" stroke="red" />}
                             />
                         </BarChart>
                     </div>
