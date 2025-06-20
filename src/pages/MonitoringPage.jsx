@@ -15,12 +15,16 @@ export default function MonitoringPage() {
         else return '#FF5050';
     };
 
+    const formatWithComma = (num) => {
+        if (typeof num !== 'number') return '0';
+        return num.toLocaleString();
+    };
+
     useEffect(() => {
         const processAnalysisSource = new EventSource(`${Server_IP}/daily-activity`);
 
         processAnalysisSource.addEventListener(`dailyActivity`, (e) => {
             const data = JSON.parse(e.data);
-            console.log(data);
             setData(data);
         });
 
@@ -42,7 +46,7 @@ export default function MonitoringPage() {
                     <div className='monitoring-overview'>
                         <div className='overview-today-data'>
                             <p className='overview-title-text'>오늘 수집된 데이터</p>
-                            <p className='overview-data-text'>{data.cnt}</p>
+                            <p className='overview-data-text'>{formatWithComma(data.cnt)}</p>
                         </div>
                         <div className='overview-rate'>
                             <p className='overview-title-text'>전일 대비 증감율</p>

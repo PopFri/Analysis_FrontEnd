@@ -72,6 +72,7 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
                         fill="#3A3A3A"
                         radius={[6, 6, 6, 6]}
                         barSize={12}
+                        isAnimationActive={false}
                         >
                         <LabelList dataKey="count" content={<CustomLabel />} />
                         </Bar>

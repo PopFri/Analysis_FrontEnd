@@ -29,6 +29,7 @@ const DataGraph = () => {
         dataAnalysisSource.close();
       };
   }, []);
+
   return (
     <div className='datagraph-container'>
         <div className='datagraph-list'>

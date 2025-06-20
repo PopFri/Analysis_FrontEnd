@@ -11,7 +11,6 @@ const ProcessGraph = () => {
 
         processAnalysisSource.addEventListener(`processGraph`, (e) => {
             const data = JSON.parse(e.data);
-            console.log(data);
             setData(data);
         });
 
