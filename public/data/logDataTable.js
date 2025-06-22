@@ -173,6 +173,18 @@ export const table = {
         {
             "name": "QUERY_res",
             "detail": "화면 해상도 (예: 1920x1080)"
+        },
+        {
+            "name": "QUERY_demension1",
+            "detail": "방문한 영화 제목"
+        },
+        {
+            "name": "QUERY_demension2",
+            "detail": "사용자 성별"
+        },
+        {
+            "name": "QUERY_demension3",
+            "detail": "사용자 생일"
         }
     ]
 };
