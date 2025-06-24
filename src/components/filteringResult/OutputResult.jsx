@@ -11,6 +11,7 @@ const OutputResult = ({ columnList }) => {
     const [totalPage, setTotalPage] = useState(1);
     const [logDataList, setLogDataList] = useState([]);
     const [dataType, setDataType] = useState("success");
+    const [dataTypeText, setDataTypeText] = useState("성공 데이터");
     const [successOrFailData, setSuccessOrFailData] = useState([]);
     const [totalDataCount, setTotalDataCount] = useState([]);
     const [recordDataModal, setRecordDataModal] = useState(false);
@@ -191,7 +192,7 @@ const OutputResult = ({ columnList }) => {
                 <div className="result-record-table-modal">
                     <div className="record-modal-content">
                         <div className="record-modal-data-title">
-                            {dataType} Data List
+                            {dataTypeText} 리스트
                         </div>
                         <div className="record-modal-scroll-area">
                             {successOrFailData && successOrFailData.length > 0 ? (
@@ -231,8 +232,8 @@ const OutputResult = ({ columnList }) => {
                         <div className="pagination-spacer" /> 
                         )}
                         <div className="record-modal-button-container">
-                            <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => setDataType("success")}>성공 데이터</div>
-                            <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => setDataType("fail")}>실패 데이터</div>
+                            <div className="record-modal-button" style={{ backgroundColor: "#1ED863" }} onClick={() => {setDataType("success"); setDataTypeText("성공 데이터")}}>성공 데이터</div>
+                            <div className="record-modal-button" style={{ backgroundColor: "#C73131" }} onClick={() => {setDataType("fail"); setDataTypeText("실패 데이터")}}>실패 데이터</div>
                         </div>
                         <div className="record-modal-cancel-button" onClick={recordModalHandler}>취소</div>
                     </div>
