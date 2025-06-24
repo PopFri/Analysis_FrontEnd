@@ -63,7 +63,7 @@
     font-size: 15px;
     color: #ffffff;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .record-header-condition {
@@ -77,9 +77,15 @@
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .record-header-count {
+    text-align: center;
     width: 30%;
     padding: 10px;
     border-right: 1px solid #313438;
@@ -93,6 +99,7 @@
 }
 
 .record-table-count {
+    text-align: end;
     width: 30%;
     padding: 10px;
     border-right: 1px solid #313438;
