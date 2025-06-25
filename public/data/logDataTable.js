@@ -180,11 +180,11 @@ export const table = {
         },
         {
             "name": "QUERY_dimension2",
-            "detail": "사용자 성별"
+            "detail": "사용자 생일"
         },
         {
             "name": "QUERY_dimension3",
-            "detail": "사용자 생일"
+            "detail": "사용자 성별"
         }
     ]
 };
