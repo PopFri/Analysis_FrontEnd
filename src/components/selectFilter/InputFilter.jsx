@@ -50,7 +50,7 @@ export default function InputFilter(props) {
   const findValueById = (nodes, targetId) => {
     for (const node of nodes) {
       if (node.id === targetId) {
-        return node.value;
+        return node.str_conditinon;
       }
       if (node.condition.length > 0) {
         const found = findValueById(node.condition, targetId);
