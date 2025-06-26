@@ -102,7 +102,7 @@ const OutputResult = ({ columnList }) => {
                 alert(data.message);
                 return;
             }
-            setLogDataList(data.result.data);
+            setLogDataList(data.result);
             const itemCount = data.result.length;
             const itemsPerPage = 12;
             const total = Math.ceil(itemCount / itemsPerPage);
@@ -161,7 +161,7 @@ const OutputResult = ({ columnList }) => {
                             ))}
                         </div>
 
-                        {logDataList
+                        {(logDataList ?? [])
                             .slice((page - 1) * 12, page * 12)
                             .map((data, rowIdx) => {
                                 const columnMap = {};
