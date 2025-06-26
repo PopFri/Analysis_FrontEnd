@@ -37,6 +37,11 @@
     width: 95%;
     height: 67%;
     margin-bottom: 10px;
+    .record-group {
+        display: flex;      
+        width: 100%;        
+        box-sizing: border-box;
+    }
 }
 
 .record-title {
@@ -47,6 +52,13 @@
     margin-bottom: 7px;
     margin-top: 10px;
 }
+
+.record-table-wrapper {
+    display: inline-block;      /* 내부 내용에 맞춰 너비 확장 */
+    min-width: 100%;            /* 최소 화면 꽉 채움 */
+    box-sizing: border-box;
+}
+
   
 .record-table-row {
     display: flex;
@@ -54,7 +66,6 @@
 }
   
 .record-table-condition {
-    width: 60%;
     padding: 10px;
     border-right: 1px solid #313438;
     border-bottom: 1px solid #313438;
@@ -76,11 +87,6 @@
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 .record-header-count {
@@ -108,7 +114,6 @@
     font-size: 15px;
     color: #ffffff;
     white-space: nowrap;
-    min-width: 80px;
 }
 
 .result-record-table::-webkit-scrollbar {
