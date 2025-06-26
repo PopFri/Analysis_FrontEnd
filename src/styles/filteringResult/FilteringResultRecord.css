@@ -66,6 +66,12 @@
     overflow: auto;
 }
 
+.record-table-condition::-webkit-scrollbar      { width: 4px; height: 4px; }
+.record-table-condition::-webkit-scrollbar-track{ background: transparent; }
+.record-table-condition::-webkit-scrollbar-thumb{ background: #555; border-radius: 20px; }
+.record-table-condition::-webkit-scrollbar-thumb:hover{ background: #555; }
+
+
 .record-header-condition {
     width: 60%;
     padding: 10px;
@@ -79,9 +85,6 @@
     overflow: hidden;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
     -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 .record-header-count {
