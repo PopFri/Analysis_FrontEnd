@@ -175,6 +175,22 @@ export const table = {
             "detail": "화면 해상도 (예: 1920x1080)"
         },
         {
+            "name": "QUERY_e_c",
+            "detail": "이벤트 카테고리 (영화 장르)"
+        },
+        {
+            "name": "QUERY_e_a",
+            "detail": "이벤트 액션 (예: time_spent)"
+        },
+        {
+            "name": "QUERY_e_n",
+            "detail": "이벤트 대상 이름 (영화 제목)"
+        },
+        {
+            "name": "QUERY_e_v",
+            "detail": "이벤트 값 (체류 시간, 초 단위)"
+        },
+        {
             "name": "QUERY_dimension1",
             "detail": "방문한 영화 제목"
         },
