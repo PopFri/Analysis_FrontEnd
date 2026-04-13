@@ -6,6 +6,7 @@ import ProcessGraph from '../components/monitoring/ProcessGraph';
 import StatisticsGender from '../components/monitoring/StatisticsGender';
 import StatisticsAge from '../components/monitoring/StatisticsAge';
 import StatisticsTotal from '../components/monitoring/StatisticsTotal';
+import UserGenreSearch from '../components/monitoring/UserGenreSearch';
 
 export default function MonitoringPage() {
     const Server_IP = import.meta.env.VITE_SERVER_IP;
@@ -59,6 +60,10 @@ export default function MonitoringPage() {
                 <div className='activity-graph'>
                     <DataGraph/>
                     <ProcessGraph/>
+                </div>
+                <div className='user-genre-section'>
+                    <p className='statistics-title'>사용자 선호 장르 Top 3</p>
+                    <UserGenreSearch />
                 </div>
                 <div className='statistics-row'>
                     <div className='activity-statistics'>

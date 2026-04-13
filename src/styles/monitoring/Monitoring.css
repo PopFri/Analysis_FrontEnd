@@ -67,6 +67,11 @@
 }
 
 
+.user-genre-section {
+    width: 86%;
+    margin-bottom: 30px;
+}
+
 .statistics-row {
     display: flex;
     flex-direction: space-between;

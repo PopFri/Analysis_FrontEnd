@@ -1,0 +1,66 @@
+.user-genre-container {
+    width: 100%;
+}
+
+.user-genre-select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-family: 'Freesentation-6SemiBold';
+    background-color: #2E2F32;
+    color: #FFFFFF;
+    border: 1px solid #555;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    outline: none;
+    appearance: none;
+}
+
+.user-genre-select option {
+    background-color: #2E2F32;
+    color: #FFFFFF;
+}
+
+.user-genre-result {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-genre-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #2E2F32;
+    border-radius: 12px;
+    padding: 14px 18px;
+}
+
+.user-genre-rank {
+    font-size: 18px;
+    font-family: 'Freesentation-7Bold';
+    color: #1ED863;
+    min-width: 32px;
+}
+
+.user-genre-name {
+    flex: 1;
+    font-size: 15px;
+    font-family: 'Freesentation-6SemiBold';
+    color: #FFFFFF;
+}
+
+.user-genre-time {
+    font-size: 15px;
+    font-family: 'Freesentation-6SemiBold';
+    color: #A0A0A0;
+}
+
+.user-genre-no-data {
+    font-size: 16px;
+    font-family: 'Freesentation-7Bold';
+    color: #A0A0A0;
+    text-align: center;
+    margin-top: 20px;
+}

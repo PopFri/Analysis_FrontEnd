@@ -15,6 +15,15 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
     const top10Data = data?.slice(0, 10);
     const dayColor = day === '실시간' ? '#F24822' : '#FFFFFF';
     
+    const formatTime = (seconds) => {
+        if (seconds == null) return '0초';
+        if (seconds < 60) return `${seconds}초`;
+        if (seconds < 3600) return `${Math.floor(seconds / 60)}분 ${seconds % 60}초`;
+        return `${Math.floor(seconds / 3600)}시간 ${Math.floor((seconds % 3600) / 60)}분`;
+    };
+
+    const formatValue = (value) => title === '체류시간' ? formatTime(value) : `${value}회`;
+
     const CustomLabel = ({ x, y, width, value }) => {
         const padding = 6;
         const safeX = typeof x === 'number' ? x : 0;
@@ -29,7 +38,7 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
                 fontSize={14}
                 textAnchor="start"
             >
-                {value}회
+                {formatValue(value)}
             </text>
         );
     };
@@ -103,7 +112,7 @@ const MovieGraph = ({data, title, selectedDay, criterion}) => {
                                             {data.movieName}
                                         </div>
                                         <div className='movie-data-data'>
-                                            {data.count}
+                                            {formatValue(data.count)}
                                         </div>
                                     </div>
                                 ))}
